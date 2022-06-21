@@ -1,0 +1,148 @@
+﻿@model MyDB.Models.Menu
+
+@{
+    ViewBag.Title = "Admin | Xóa Menu";
+}
+@using (Html.BeginForm("Delete", "Menu", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="content-wrapper">
+        <!-- Main content -->
+        <section class="content my-3">
+
+            <!-- Default box -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <strong class="text-danger text-uppercase">Xóa Menu</strong>
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Bạn có chắc muốn xóa không?');">
+                                Xóa
+                            </button>
+                            <a href="@Url.Action("Edit", "Menu", new { id = Model.Id })" class="btn btn-sm btn-primary">
+                                <i class="fas fa-edit"></i> Sửa
+                            </a>
+                            <a href="@Url.Action("Index", "Menu")" class="btn btn-sm btn-info">
+                                <i class="fas fa-arrow-left"></i> Về trang chủ
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered table-striped">
+                        <tr>
+                            <td>
+                                Mã Menu
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => model.Id)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Tên menu
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => model.Name)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Cấp cha
+                            </td>
+
+                            <td>
+                                @ViewBag.ParentName
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Link)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => model.Link)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                               Kiểu trang
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => model.TypeMenu)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Vị trí
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => model.Position)
+                            </td>
+                        </tr>                        
+                        <tr>
+                            <td>
+                                Ngày tạo
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => model.CreateAt)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Người tạo
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => model.CreateBy)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Ngày cập nhật
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => model.UpdateAt)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Người cập nhật
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => model.UpdateBy)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Trạng thái</td>
+                            <td>
+                                @if (Model.Status == 1)
+                                {
+                                    <span class="text-success">Hoạt động</span>
+                                }
+                                else
+                                {
+                                    <span class="text-danger">Ngừng hoạt động</span>
+                                }
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+
+        </section>
+        <!-- /.content -->
+    </div>
+}

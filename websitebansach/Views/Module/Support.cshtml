@@ -1,0 +1,121 @@
+﻿@model IEnumerable<CartItem>
+
+
+
+<div class="col l-9 m-2 c-3 header-top__support">
+    <div class="row hide-on-mobile-tablet">
+        <div class="col l-8 header-top__support-search">
+            <div class="header-search-wrapper">
+                <input type="text" name="search" id="header-search" class="header-search" />
+                <input type="submit" value="Tìm" class="header-search-submit" />
+            </div>
+        </div>
+        <ul class="col l-4 header-top__support-tool">
+            <li class="header-tool">
+                @if (Session["UserCustomer"].Equals(""))
+                {
+                    <a href="~/dang-nhap" class="header-tool-login">Đăng nhập</a>
+                }
+                else
+                {
+                    <a href="@Url.Action("DangXuat","Khachhang")" class="header-tool-login">Đăng xuất</a>
+                }
+            </li>
+            @if (Model != null && Model.Count() > 0)
+            {
+                <li class="header-tool header-cart">
+                    <a class="header-cart__text">Giỏ hàng</a>
+                    <span>
+                        (<span class="header-cart__number">@Model.Count()</span>)
+                    </span>
+
+                    <i class="fas fa-sort-down"></i>
+
+                    <ul class="header-cart__content">
+                        <li class="header-cart__content-heading">Giỏ hàng</li>
+                        <li>
+                            <ul class="header-cart__list">
+                                @{ decimal Cost = 0;}
+                                @foreach (var i in Model)
+                                {
+
+                                    <li class="header-cart__item row no-gutters">
+                                        <div class="col l-2">
+                                            <img src="~/Assets/Client/images/products/@i.Image" alt="" class="header-cart__item-img" />
+                                        </div>
+                                        <div class="col l-9">
+                                            <a href="#" class="header-cart__item-text">
+                                                @i.Name
+                                            </a>
+                                            <span class="header-cart__item-price">
+                                                @string.Format("{0:0,0}", i.SalePrice)<sup>đ</sup>
+                                            </span>
+                                        </div>
+                                        <div class="col l-1">
+                                            <a href="@Url.Action("CartDelete", "Giohang", new {productId = i.Id})" class="cart-delete">
+                                                <i class="fas fa-times header-cart__item-delete">
+                                                </i>
+                                            </a>
+                                        </div>
+                                    </li>
+                                    Cost += i.Amount;
+                                }
+                            </ul>
+                        </li>
+                        <li class="header-cart__content-cost">
+                            <p>
+                                <strong>Tổng Tiền:</strong>
+                                <span class="header-cart__content-total">
+                                    @string.Format("{0:0,0}", Cost)<sup>đ</sup>
+                                </span>
+                            </p>
+                            <div class="header-cart__btn-open">
+                                <a href="@Url.Action("Index","Giohang")" class="btn-giohang">
+                                    Xem giỏ hàng
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            }
+            else
+            {
+                <li class="header-tool header-cart">
+                    <a class="header-cart__text">Giỏ hàng</a>
+                    <span>
+                        (<span class="header-cart__number">0</span>)
+                    </span>
+
+                    <i class="fas fa-sort-down"></i>
+                    <ul class="header-cart__content">
+                        <li class="header-cart__content-heading">Giỏ hàng</li>
+                        <li> Giỏ hàng rỗng </li>
+                    </ul>
+                </li>
+            }
+        </ul>
+    </div>
+    <div class="row header-top__tablet-mobile hide-on-pc">
+        <div class="header-top__tablet-mobile-search">
+            <i class="fas fa-search"></i>
+        </div>
+        @if (Model != null && Model.Count() > 0)
+        {
+            <div class="header-top__tablet-mobile-cart">
+                <a href="~/gio-hang">
+                    <i class="fas fa-shopping-cart"></i>
+                    <p>(<span class="shownumber">@Model.Count()</span>)</p>
+                </a>
+            </div>
+        }
+        else
+        {
+            <div class="header-top__tablet-mobile-cart">
+                <a href="~/gio-hang">
+                    <i class="fas fa-shopping-cart"></i>
+                    <p>(<span class="shownumber">0</span>)</p>
+                </a>
+            </div>
+        }
+    </div>
+</div>

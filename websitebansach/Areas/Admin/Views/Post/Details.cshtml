@@ -1,0 +1,133 @@
+﻿@model MyDB.Models.Post
+
+@{
+    ViewBag.Title = "Admin | Chi tiết post";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="content-wrapper">
+        <!-- Main content -->
+        <section class="content my-3">
+
+            <!-- Default box -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <strong class="text-danger text-uppercase">Chi tiết post</strong>
+                        </div>
+                        <div class="col-md-6 text-right">                         
+                            <a href="@Url.Action("Index", "Post")" class="btn btn-sm btn-info">
+                                <i class="fas fa-arrow-left"></i> Về trang chủ
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered table-striped">
+                        <tr>
+                            <td>
+                                Mã post
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => model.Id)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Tên post
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => model.Title)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Slug)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => model.Slug)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Ngày tạo
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => model.CreateAt)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Người tạo
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => model.CreateBy)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Ngày cập nhật
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => model.UpdateAt)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Người cập nhật
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => model.UpdateBy)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.MetaDesc)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => model.MetaDesc)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Từ khóa
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => model.MetaKey)
+                            </td>
+                        </tr>
+                       
+                        <tr>
+                            <td>Trạng thái</td>
+                            <td>
+                                @if (Model.Status == 1)
+                                {
+                                    <span class="text-success">Hoạt động</span>
+                                }
+                                else
+                                {
+                                    <span class="text-danger">Ngừng hoạt động</span>
+                                }
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+
+        </section>
+        <!-- /.content -->
+    </div>
+}

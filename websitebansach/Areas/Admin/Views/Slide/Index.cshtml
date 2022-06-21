@@ -1,0 +1,105 @@
+﻿@model IEnumerable<MyDB.Models.Slide>
+
+@{
+    ViewBag.Title = "Admin | Slide";
+}
+
+@section header{
+    <link href="~/Assets/Admin/css/jquery.dataTables.min.css" rel="stylesheet" />
+}
+@section footer{
+    <script src="~/Assets/Admin/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
+    </script>
+}
+<div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content my-3">
+
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-6">
+                        <strong class="text-danger text-uppercase">Slide</strong>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <a href="@Url.Action("Create","Slide")" class="btn btn-sm btn-success">
+                            <i class="fas fa-plus"></i> Thêm
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                @Html.Partial("Message")
+                <table class="table table-bordered table-striped" id="myTable">
+                    <thead>
+
+                        <tr>
+                            <th>
+                                Hình
+                            </th>
+                            <th>
+                                Sự kiện
+                            </th>
+                            <th>
+                                Ngày tạo
+                            </th>
+
+                            <th>
+                                Trạng thái
+                            </th>
+                            <th>Chức năng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>
+                                <img src="~/Assets/Client/Images/slides/@item.Image" class="img-fluid" alt="loi" width="180" />
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Event)
+                            </td>
+
+                            <td>@string.Format("{0:dd/MM/yyyy}", item.CreateAt)</td>
+
+                            <td>
+                                @if (item.Status == 1)
+                                {
+                                    <a href="@Url.Action("Status","Slide", new { id = item.Id })" class="btn btn-sm btn-success">Hoạt động</a>
+                                }
+                                else
+                                {
+                                    <a href="@Url.Action("Status","Slide", new { id = item.Id })" class="btn btn-sm btn-danger">Không hoạt động</a>
+                                }
+                            </td>
+                            <td>
+                                <a href="@Url.Action("Details","Slide", new { id = item.Id })" class="btn btn-sm btn-info">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="@Url.Action("Edit","Slide", new { id = item.Id })" class="btn btn-sm btn-primary">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a href="@Url.Action("Delete","Slide", new { id = item.Id })" class="btn btn-sm btn-danger">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+
+    </section>
+    <!-- /.content -->
+</div>

@@ -1,0 +1,226 @@
+﻿@model IEnumerable<CartItem>
+@{
+    ViewBag.Title = "Thanh toán";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    var User = ViewBag.UserCustomer;
+}
+
+@section header{
+
+    <link href="~/Assets/Client/css/checkout.css" rel="stylesheet" />
+}
+@section header_top{
+    @Html.Action("MainMenu", "Module")
+}
+
+@Html.Partial("Breadcrumb")
+@using (Html.BeginForm("DatMua", "Giohang", FormMethod.Post))
+{
+    <div id="app-content">
+        <div class="grid wide">
+            <div id="app-content">
+                <section id="checkout">
+                    <div class="grid wide">
+                        <div class="row">
+                            <!-- left -->
+                            <div class="checkout-left col l-9 m-12 c-12">
+                                <div class="checkout-left-wrapper-address">
+                                    <div class="checkout-left-address">
+                                        <div class="checkout-left__heading">
+                                            <h2 class="checkout-left__heading-title">
+                                                Thông tin khách hàng
+                                            </h2>
+                                        </div>
+                                        <form action="" id="checkout-form">
+                                            <div class="checkout-group">
+                                                <div class="row">
+                                                    <label for="" class="col l-2 m-2 c-4 checkout-form-label">
+                                                        Họ và tên <span class="checkout-star">*</span>
+                                                    </label>
+                                                    @if (User.Gender = true)
+                                                    {
+                                                        <input type="text" class="col l-1 m-2 c-2 form--bg" value="Anh" readonly />
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="text" class="col l-1 m-2 c-2 form--bg" value="Nữ" readonly />
+
+                                                    }
+
+                                                    <input type="text" id="checkout-name" class="checkout-form-control form--bg col l-4 m-12 c-12" value="@User.Fullname" readonly />
+                                                </div>
+                                            </div>
+                                            <div class="checkout-group">
+                                                <div class="row ">
+                                                    <label for="checkout-phone" class="checkout-form-label col l-2 m-2 c-4">
+                                                        Điện thoại <span class="checkout-star">*</span>
+                                                    </label>
+                                                    <input type="text" class="checkout-form-control form--bg col l-5 m-12 c-12" value="@User.Phone" readonly />
+                                                </div>
+                                            </div>
+                                            <div class="checkout-group">
+                                                <div class="row ">
+                                                    <label for="" class="checkout-form-label col l-2 m-2 c-4">
+                                                        Địa chỉ <span class="checkout-star">*</span>
+                                                    </label>
+                                                    <input class="checkout-form-control form--bg col l-5 m-12 c-12" readonly value="@User.Address">
+                                                </div>
+                                            </div>
+                                        </form>
+
+
+                                    </div>
+                                </div>
+
+                                <div class="checkout-left-wrapper-address mt-3">
+                                    <div class="checkout-left-address">
+                                        <div class="checkout-left__heading">
+                                            <h2 class="checkout-left__heading-title">
+                                                Thông tin người nhận
+                                            </h2>
+                                        </div>
+                                        <div class="checkout-group">
+                                            <div class="row">
+                                                <label for="" class="col l-2 m-2 c-4 checkout-form-label">
+                                                    Họ và tên <span class="checkout-star">*</span>
+                                                </label>
+
+                                                <input name="Name" type="text" id="checkout-name" class="checkout-form-control form--bg col l-5 m-12 c-12" value="@User.Fullname" />
+                                            </div>
+                                        </div>
+                                        <div class="checkout-group">
+                                            <div class="row ">
+                                                <label for="checkout-phone" class="checkout-form-label col l-2 m-2 c-4">
+                                                    Điện thoại <span class="checkout-star">*</span>
+                                                </label>
+                                                <input type="text" name="Phone" class="checkout-form-control form--bg col l-5 m-12 c-12" value="@User.Phone" />
+                                            </div>
+                                        </div>
+                                        <div class="checkout-group">
+                                            <div class="row ">
+                                                <label for="" class="checkout-form-label col l-2 m-2 c-4">
+                                                    Địa chỉ <span class="checkout-star">*</span>
+                                                </label>
+                                                <input name="Address" class="checkout-form-control form--bg col l-5 m-12 c-12" value="@User.Address">
+                                            </div>
+                                        </div>
+                                        <div class="checkout-group">
+                                            <div class="row ">
+                                                <label for="" class="checkout-form-label col l-2 m-2 c-4">
+                                                    Note
+                                                </label>
+                                                <textarea name="Note" id="" cols="30" rows="5" class="checkout-form-textarea col l-5 m-5 c-12"></textarea>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- right -->
+                            <div class="checkout-right col l-3 m-12 c-12">
+                                <div class="checkout-right-wrapper">
+                                    <div class="checkout-right-order">
+                                        <div class="checkout-right-order__top">
+                                            <div class="checkout-right-heading">
+                                                <h2>
+                                                    Đơn hàng (<span class="shownumber">@Model.Count()</span> ) sản phẩm
+                                                </h2>
+                                                <a href="@Url.Action("Index", "Giohang")" class="checkout-right-repair">Sửa</a>
+                                            </div>
+                                        </div>
+                                        <div class="checkout-right-order__body">
+                                            @{ decimal cost = 0;}
+                                            @foreach (var i in Model)
+                                            {
+
+                                                <div class="checkout-right-order__body-item">
+                                                    <a class="checkout-right-order__body-item-text">
+                                                        <span class="shownumber">@i.Quantity</span> x @i.Name
+                                                    </a>
+                                                    <span class="checkout-right-order__body-item-price">@string.Format("{0:0,0}", i.Amount)<sup>đ</sup></span>
+                                                </div>
+                                                cost += i.Amount;
+                                            }
+
+
+                                        </div>
+
+                                        <div class="checkout-right-order__footer">
+                                            <div class="checkout-right-order__footer-item">
+                                                <p>Tạm tính</p>
+                                                <span class="checkout-right-order__footer-item-subtotal">
+                                                    @string.Format("{0:0,0}", cost)<sup>đ</sup>
+                                                </span>
+                                            </div>
+                                            <div class="checkout-right-order__footer-item">
+                                                <p>Phí vận chuyển</p>
+                                                <span class="
+                                checkout-right-order__footer-item-subtotal
+                                checkout-right-order__footer-item--red
+                              ">
+                                                    Miễn phí
+                                                </span>
+                                            </div>
+                                            <div class="
+                              checkout-right-order__footer-item
+                              checkout-right-order__footer-item--gray
+                            ">
+                                                <p>Thành tiền</p>
+                                                <span class="checkout-right-order__footer-item-subtotal">
+                                                    @string.Format("{0:0,0}", cost)<sup>đ</sup>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="checkout-left-wrapper-payment">
+                                    <div class="checkout-left-payment ">
+                                        <div class=" checkout-left__heading">
+                                            <h2 class="checkout-left__heading-title">
+                                                Phương thức thanh toán
+                                            </h2>
+                                        </div>
+                                        <div class="checkout-left-payment__select">
+                                            <div class="checkout-group checkout-payment">
+                                                <input type="radio" name="Payment" id="checkout-payment-cast" class="payment-radio" checked value="Tiền mặt" />
+                                                <label for="checkout-payment-cast" class="checkout-form-label">
+                                                    Thanh toán tiền mặt khi nhận hàng
+                                                </label>
+                                            </div>
+                                            <div class="checkout-group checkout-payment">
+                                                <input type="radio" name="Payment" id="checkout-payment-bank" class="payment-radio" value="Chuyển khoản" />
+                                                <label for="checkout-payment-bank" class="checkout-form-label">
+                                                    Chuyển khoản ngân hàng
+                                                </label>
+                                                <div class="checkout-payment-content">
+                                                    <p>
+                                                        Tài khoản BIDV: 12300065xxx - Chủ tài khoản: Nguyễn Văn A – CN Đông Sài Gòn
+                                                    </p>
+                                                    <p>
+                                                        Lưu ý: Sau khi chuyển khoản, quý khách vui lòng thông báo qua điện thoại hoặc email để Nobita tiện kiểm tra và xử lý đơn hàng.
+                                                    </p>
+                                                    <p>
+                                                        Hỗ trợ khách hàng: 0938 424 289 - Email: admin@nobita.vn
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="checkout-left-payment-order">
+                                            <button type="submit" class="checkout-order-btn">Đặt mua</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+}

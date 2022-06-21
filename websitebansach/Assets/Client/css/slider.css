@@ -1,0 +1,125 @@
+#slider {
+  background-color: var(--bg-1-color);
+}
+
+.sidebar {
+}
+.sidebar-wrapper {
+}
+.sidebar-title {
+  background-color: var(--main-color);
+  color: #fff;
+  padding: 5px 10px 6px 5px;
+  width: 100%;
+  text-align: center;
+  font-size: 1.6rem;
+  display: inline-block;
+}
+
+.sidebar-list {
+  background-color: #fff;
+  list-style: none;
+  float: none;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 0;
+}
+
+.sidebar-item {
+  width: 100%;
+  height: auto;
+  padding: 0px;
+}
+.sidebar-item__link {
+  display: block;
+  color: #444;
+  font-size: 14px;
+  padding: 12px 10px 13px 20px;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgb(0 0 0 / 0%);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  -webkit-transition-property: color;
+  transition-property: color;
+  line-height: 17px;
+  text-align: left;
+  text-decoration: none;
+}
+
+.sidebar-item__link:hover {
+  padding-left: 40px;
+  background-color: rgba(0, 204, 102, 0.8);
+  transition: padding-left 0.5s ease-in-out;
+}
+
+.slider-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.slider-list-picture {
+    display: flex;
+    transition: all 1s ease;
+    margin: 0 -15px;
+}
+
+/* .slider-img.active {
+    display: block;
+} */
+
+.slider-img {
+  width: 100%;
+  /* display: none; */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.slider-list-control {
+  position: absolute;
+  display: flex;
+  bottom: 10px;
+  width: 100%;
+  justify-content: center;
+}
+
+.slider-control-item.active {
+  background-color: var(--main-color);
+}
+
+.slider-control-item {
+  background-color: rgba(255, 255, 255, 0.5);
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+}
+
+.slider-control-item:not(:first-child) {
+  margin-left: 10px;
+}
+
+.slider-arrow-left,
+.slider-arrow-right {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.6rem;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.slider-arrow-right {
+  right: 0;
+}

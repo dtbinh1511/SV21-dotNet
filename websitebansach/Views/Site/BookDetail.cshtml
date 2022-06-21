@@ -1,0 +1,246 @@
+﻿@model MyDB.Models.Book
+@{
+    var category = @ViewBag.Category;
+    var author = @ViewBag.Author;
+    var publisher = @ViewBag.Publisher;
+    var rate = Model.Rate;
+    var result = rate * 100;
+    var SalePrice = Model.Price - (Model.Price * rate);
+    var Save = (Model.Price * rate);
+}
+
+@{
+    ViewBag.Title = Model.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@section header{
+    <link href="~/Assets/Client/css/content.css" rel="stylesheet" />
+    <link href="~/Assets/Client/css/detail.css" rel="stylesheet" />
+}
+@section footer{
+    <script>
+        const tabs = $$('.tab');
+        const panes = $$('.pane');
+        tabs.forEach((tab, index) => {
+            tab.onclick = function (e) {
+                $(".tab.active").classList.remove("active");
+                $(".pane.active").classList.remove("active");
+
+                this.classList.add('active');
+                panes[index].classList.add('active');
+            }
+        });
+    </script>
+}
+@section header_top{
+    @Html.Action("MainMenu", "Module")
+}
+
+@Html.Partial("Breadcrumb")
+
+
+<div id="app-content">
+    <div class="grid wide">
+        <section id="detail">
+            <div class="row detail-wrapper">
+                <div class="col l-2 m-12 c-12">
+                    <div class="detail-picture">
+                        <img src="~/Assets/Client/images/products/@Model.Image" alt="" class="detail-img" />
+                    </div>
+                </div>
+                <div class="col l-10 m-12 c-12">
+                    <div class="detail-content">
+                        <div class="row">
+                            <div class="col l-12 m-12 c-12">
+                                <h2 class="detail-content__title">
+                                    @Model.Name
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col l-3 m-6 c-6">
+                                <p class="detail-content__authors">
+                                    Tác giả:
+                                    <a href="~/@author.Slug"
+                                       class="detail-content__author detail-content--main-color">
+                                        @author.Name
+                                    </a>
+                                </p>
+                            </div>
+                            <div class="col l-3 m-6 c-6">
+                                <p class="detail-content__publisher">
+                                    Nhà phát hành:
+                                    <a href="~/@publisher.Slug"
+                                       class="detail-content__publisher-name detail-content--main-color">
+                                        @publisher.Name
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row detail-content--border detail-content-total">
+                            <div class="col l-4 m-6 c-6">
+                                <div class="detail-content__price detail-content--main-color">
+                                    @string.Format("{0:0,0}", SalePrice)<sup>đ</sup>
+                                </div>
+                                <div class="row">
+                                    <div class="col l-5 m-5 c-12">
+                                        <p class="detail-content__root-price">
+                                            Giá bìa:@string.Format("{0:0,0}", Model.Price)<sup>đ</sup>
+                                        </p>
+                                    </div>
+                                    <div class="col l-7 m-7 c-12">
+                                        <p class="detail-content__sale-price">
+                                            Tiết kiệm: @string.Format("{0:0,0}", Save)<sup>đ</sup> (- @string.Format("{0:0}", result)%)
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col l-3 m-6 c-6">
+                                @if (Model.Status == 0)
+                                {
+                                    <a class="detail-content__button active">Sắp phát hành</a>
+                                }
+                                else
+                                {
+                                    <a href="@Url.Action("CartAdd","Giohang", new {productId = Model.Id})" class="detail-content__button">Mua ngay</a>
+
+                                }
+                            </div>
+                        </div>
+                        <div class="detail-content__accompanying-promotion">
+                            <div class="row">
+                                <div class="col l-12 m-12 c-12">
+                                    <p>
+                                        <i class="fas fa-check detail-content--main-color"></i> Bọc Plastic miễn phí
+                                    </p>
+                                </div>
+                                <div class="col l-12 m-12 c-12">
+                                    <p>
+                                        <i class="fas fa-check detail-content--main-color"></i> Giao hàng miễn phí trong nội thành TP. HCM với đơn hàng
+                                        <span class="detail-content--main-color detail-content--strong">
+                                            ≥ 150.000 đ
+                                        </span>
+                                    </p>
+                                </div>
+                                <div class="col l-12 m-12 c-12">
+                                    <p>
+                                        <i class="fas fa-check detail-content--main-color"></i> Giao hàng miễn phí toàn quốc với đơn hàng
+                                        <span class="detail-content--main-color detail-content--strong">
+                                            ≥ 250.000 đ
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </section>
+
+        <section class="tab-section">
+            <ul class="tabs">
+                <li class="tab active">Giới thiệu sách</li>
+                <li class="tab">Thông tin chi tiết</li>
+                <li class="tab">Nhận xét</li>
+            </ul>
+
+            <div class="panes">
+                <div class="pane active ">
+                    <div class="row">
+                        <div class="detail-description">
+                            <h6 class="detail-title">@Model.Name</h6>
+
+                            <p>
+                                @Model.Description
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="pane ">
+                    <div class="content-table">
+                        <table class="table">
+                            <tr>
+                                <td class="detail-content--main-color">Tác giả</td>
+                                <td><a href="~/@author.Slug" class="not-underline a-hover">@author.Name</a></td>
+                            </tr>
+                            <tr>
+                                <td class="detail-content--main-color">NXB</td>
+                                <td><a href="~/@publisher.Slug" class="not-underline a-hover">@publisher.Name</a></td>
+                            </tr>
+                            <tr>
+                                <td>Kích thước</td>
+                                <td>@Model.Size</td>
+                            </tr>
+                            <tr>
+                                <td>Trọng lượng</td>
+                                <td>@Model.Weight</td>
+                            </tr>
+                            <tr>
+                                <td>Ngày phát hành</td>
+                                <td>@Model.DatePub</td>
+                            </tr>
+                            <tr>
+                                <td class="detail-content--main-color">Danh mục</td>
+                                <td><a href="~/@category.Slug" class="not-underline a-hover">@category.Name</a></td>
+                            </tr>
+                        </table>
+
+                    </div>
+                </div>
+                <div class="pane ">
+                    <div class="comment-section">
+                        <div class="comment-header">
+                            <img src="./assets/images/avatar5.png" alt="" class="comment-image">
+                            <form action="#" method="" class="form">
+                                <div class="form-group">
+                                    <input type="text" name="message" id="" class="form-control">
+                                </div>
+                                <button class="btn btn-primary" type="submit">Bình luận</button>
+                            </form>
+                        </div>
+                        <div class="comment-body">
+                            <div class="comment-list">
+                                <div class="comment-item">
+                                    <img src="./assets/images/avatar5.png" alt="" class="comment-image">
+                                    <div class="comment-item__contents">
+                                        <h6 class="comment-item__content-name">Bình Đỗ</h6>
+                                        <p class="comment-item__content">
+                                            Giao hàng khá nhanh, gói hàng cẩn thận, chị shipper rất đẹp gái Giao hàng khá nhanh, gói hàng cẩn thận, chị shipper rất đẹp gái Giao hàng khá nhanh, gói hàng cẩn thận, chị shipper rất đẹp gái Giao hàng khá
+                                            nhanh, gói hàng cẩn thận, chị shipper rất đẹp gái Giao hàng khá nhanh, gói hàng cẩn thận, chị shipper rất đẹp gái Giao hàng khá nhanh, gói hàng cẩn thận, chị shipper rất đẹp gái
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="comment-item">
+                                    <img src="./assets/images/avatar5.png" alt="" class="comment-image">
+                                    <div class="comment-item__contents">
+                                        <h6 class="comment-item__content-name">Bình Đỗ</h6>
+                                        <p class="comment-item__content">
+                                            Giao hàng khá nhanh, gói hàng cẩn thận, chị shipper rất đẹp gái Giao hàng khá nhanh, gói hàng cẩn thận, chị shipper rất đẹp gái Giao hàng khá nhanh, gói hàng cẩn thận, chị shipper rất đẹp gái Giao hàng khá
+                                            nhanh, gói hàng cẩn thận, chị shipper rất đẹp gái Giao hàng khá nhanh, gói hàng cẩn thận, chị shipper rất đẹp gái Giao hàng khá nhanh, gói hàng cẩn thận, chị shipper rất đẹp gái
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="comment-item">
+                                    <img src="./assets/images/avatar5.png" alt="" class="comment-image">
+                                    <div class="comment-item__contents">
+                                        <h6 class="comment-item__content-name">Bình Đỗ</h6>
+                                        <p class="comment-item__content">
+                                            Giao hàng khá nhanh, gói hàng cẩn thận, chị shipper rất đẹp gái Giao hàng khá nhanh, gói hàng cẩn thận, chị shipper rất đẹp gái Giao hàng khá nhanh, gói hàng cẩn thận, chị shipper rất đẹp gái Giao hàng khá
+                                            nhanh, gói hàng cẩn thận, chị shipper rất đẹp gái Giao hàng khá nhanh, gói hàng cẩn thận, chị shipper rất đẹp gái Giao hàng khá nhanh, gói hàng cẩn thận, chị shipper rất đẹp gái
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        @Html.Action("SameAuthor", "Module", new { @id = Model.AuthorId })
+    </div>
+</div>

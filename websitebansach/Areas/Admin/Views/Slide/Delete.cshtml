@@ -1,0 +1,113 @@
+﻿@model MyDB.Models.Slide
+
+@{
+    ViewBag.Title = "Admin | Xóa Slide";
+
+}
+@using (Html.BeginForm(""))
+{
+    @Html.AntiForgeryToken()
+
+
+    <div class="content-wrapper">
+        <!-- Main content -->
+        <section class="content my-3">
+
+            <!-- Default box -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <strong class="text-danger text-uppercase">Xóa Slide</strong>
+                        </div>
+                        <div class="col-md-6 text-right">
+
+                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Bạn có chắc muốn xóa không?');">
+                                Xóa
+                            </button>
+                            <a href="@Url.Action("Edit", "Slide", new { id = Model.Id })" class="btn btn-sm btn-primary">
+                                <i class="fas fa-edit"></i> Sửa
+                            </a>
+                            <a href="@Url.Action("Index", "Slide")" class="btn btn-sm btn-info">
+                                <i class="fas fa-arrow-left"></i> Về trang chủ
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered table-striped">
+                        <tr>
+                            <td>
+                                Mã Slide
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => model.Id)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Sự kiện
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => model.Event)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Ngày tạo
+                            </td>
+
+                            <td>@string.Format("{0:dd/MM/yyyy}", Model.CreateAt)</td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                Người tạo
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => model.CreateBy)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Ngày cập nhật
+                            </td>
+
+                            <td>@string.Format("{0:dd/MM/yyyy}", Model.UpdateAt)</td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                Người cập nhật
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => model.UpdateBy)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Trạng thái</td>
+                            <td>
+                                @if (Model.Status == 1)
+                                {
+                                    <span class="text-success">Hoạt động</span>
+                                }
+                                else
+                                {
+                                    <span class="text-danger">Ngừng hoạt động</span>
+                                }
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+
+        </section>
+        <!-- /.content -->
+    </div>
+}

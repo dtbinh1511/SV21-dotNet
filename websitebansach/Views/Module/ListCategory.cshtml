@@ -1,0 +1,11 @@
+﻿@model IEnumerable<MyDB.Models.Category>
+
+<div class="sidebar-wrapper">
+    <h2 class="sidebar-wrapper-headding">Danh mục</h2>
+    <ul class="sidebar-list sidebar-scroll">
+        @foreach (var item in Model)
+        {
+            <li class="sidebar-item"><a href="~/@item.Slug">@item.Name</a></li>
+        }
+    </ul>
+</div>

@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Trang chủ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section header{
+    <link href="~/Assets/Client/css/slider.css" rel="stylesheet" />
+    <link href="~/Assets/Client/css/content.css" rel="stylesheet" />
+}
+
+@Html.Action("Slider", "Module")
+
+<div id="app-content">
+    <div class="grid wide">
+        <!-- Sách mới start -->
+        @Html.Action("ComingSoon", "Module")
+        @Html.Action("NewBook", "Module")
+        @Html.Action("Seller", "Module")
+        @Html.Action("About","Module")
+     
+    </div>
+</div>

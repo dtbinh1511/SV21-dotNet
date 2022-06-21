@@ -1,0 +1,88 @@
+﻿@model IEnumerable<MyDB.Models.Book>
+
+@{
+    var obj = @ViewBag.Publisher;
+}
+@{
+    ViewBag.Title = obj.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section header{
+    <link href="~/Assets/Client/css/content.css" rel="stylesheet" />
+    <link href="~/Assets/Client/css/category.css" rel="stylesheet" />
+}
+
+@section header_top{
+    @Html.Action("MainMenu", "Module")
+}
+
+@Html.Partial("Breadcrumb")
+
+<div id="app-content">
+    <div class="grid wide">
+        <div id="category" class="row">
+            <div class="sidebar col l-2-4 hide-on-mobile-tablet">
+                @Html.Action("ListCategory", "Module")
+                @Html.Action("ListAuthor", "Module")
+                @Html.Action("ListPublisher", "Module")
+            </div>
+
+            <div class="category-content col l-2-8 m-12 c-12">
+                <div class="category-content-wrapper">
+                    <h2 class="category-content-wrapper__heading">@obj.Name</h2>
+                    <div class="category-filter">
+                        <form action="" id="category-form-filter">
+                            <label for="">Xem theo</label>
+                            <select name="" id="">
+                                <option value="" selected>Mới trước cũ sau</option>
+                                <option value="" selected>Cũ trước mới sau</option>
+                                <option value="" selected>Giá cao đến thấp</option>
+                                <option value="" selected>Giá thấp đến cao</option>
+                            </select>
+                        </form>
+                    </div>
+                    <!-- product start -->
+                    <div class="book-content">
+                        <div class="product-list row">
+                            @foreach (var item in Model)
+                            {
+                                <div class="product-item col l-3 m-6 c-6">
+                                    <div class="product-item-wrapper">
+                                        <a href="~/@item.Slug">
+                                            <div class="product-item-wrapper__img"
+                                                 style="background-image: url('../../Assets/Client/images/products/@item.Image'); ">
+                                                <span class="product-item-wrapper__sale"
+                                                      style="background-image: url('../../Assets/Client/images/saleprice.png');">
+                                                    @{ var rate = item.Rate;
+                                                        var result = rate * 100;
+                                                        var SalePrice = item.Price - (item.Price * rate);
+                                                    }
+                                                    @string.Format("{0:0}", result)%
+                                                </span>
+                                            </div>
+                                        </a>
+                                        <div class="product-item-wrapper__details col">
+                                            <div class="product-item-wrapper__title">
+                                                <a href="~/@item.Slug" class="product-item-wrapper__link">
+                                                    <p>@item.Name</p>
+                                                </a>
+                                            </div>
+                                            <div class="product-item-wrapper__prices">
+                                                <div class="product-item-wrapper__sale-price">@string.Format("{0:0,0}", SalePrice)  <sup>đ</sup> </div>
+                                                <div class="product-item-wrapper__old-price"><del>@string.Format("{0:0,0}", item.Price)</del> <sup>đ</sup></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+
+                        </div>
+                    </div>
+                    <!-- product start -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

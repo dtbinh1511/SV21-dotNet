@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "Đăng nhập";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section header{
+
+    <link href="~/Assets/Client/css/login.css" rel="stylesheet" />
+}
+
+@section header_top{
+    @Html.Action("MainMenu", "Module")
+}
+
+@Html.Partial("Breadcrumb")
+
+<div id="app-content">
+    <div class="grid wide">
+        <div class="col l-o-4">
+            @using (Html.BeginForm("DangNhap", "Khachhang", FormMethod.Post))
+            {
+                <p class="login-form-heading">Đăng nhập bằng tài khoản nobita</p>
+                <p class="error">@ViewBag.Error</p>
+                <div class="login-form-item">
+                    <label for="login-form-item-email" class="login-form-item-label">
+                        Email <span class="login-form-item-special">*</span>
+                    </label>
+                    <input type="email" name="email" id="login-form-item-email" class="login-form-item-control" />
+                    <span class="login-form-message">Nhập email của bạn</span>
+                </div>
+                <div class="login-form-item">
+                    <label for="login-form-item-password" class="login-form-item-label">
+                        Mật khẩu <span class="login-form-item-special">*</span>
+                    </label>
+                    <input type="password" name="password" id="login-form-item-password" class="login-form-item-control" />
+                    <span class="login-form-message">Nhập mật khẩu của bạn</span>
+                </div>
+                <div class="login-form-item">
+                    <label for="" class="login-form-item-label"></label>
+                    <input type="submit" name="login" id="login-form-item-login" class="login-form-item-submit"
+                           value="Đăng nhập" />
+                    <a href="~/dang-ky" class="login-form-item-link">Tạo tài khoản</a>
+                </div>
+                <div class="card-social card-facebook col l-1">
+                    <div class="card-body">
+                        <a href="" class="btn-facebook">
+                            <i class="fa-brands fa-facebook " style=""></i>
+                            Đăng nhập với Facebook
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

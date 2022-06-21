@@ -1,0 +1,20 @@
+﻿@model IEnumerable<MyDB.Models.Menu>
+
+
+<ul class="footer-list row">
+    <li class="footer-item col l-3 m-6 c-6">
+        <h2>Hỗ trợ khách hàng</h2>
+        <ul class="footer-sublist">
+            <li class="footer-subitem">
+                <a href="mailto:dtb751@gmail.com">Email: dtb751@gmail.com </a>
+            </li>
+            <li class="footer-subitem">
+                <a href="tel:0387655461"> Hotline: <span>0387 655 461</span></a>
+            </li>
+        </ul>
+    </li>
+    @foreach (var footer in Model)
+    {
+        @Html.Action("FooterSub", "Module", new { @id = footer.Id });
+    }
+</ul>

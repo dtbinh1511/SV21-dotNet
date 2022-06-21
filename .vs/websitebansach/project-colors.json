@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "842871d6-e8aa-4c73-bcca-887e3cd82774": {
+      "ProjectGuid": "842871d6-e8aa-4c73-bcca-887e3cd82774",
+      "DisplayName": "websitebansach",
+      "ColorIndex": 0
+    },
+    "236f5047-0d93-4cb3-8ec6-3c138f5a7056": {
+      "ProjectGuid": "236f5047-0d93-4cb3-8ec6-3c138f5a7056",
+      "DisplayName": "MyClass",
+      "ColorIndex": 1
+    },
+    "aa1b8f02-0459-4801-a9b5-a997d7c79c03": {
+      "ProjectGuid": "aa1b8f02-0459-4801-a9b5-a997d7c79c03",
+      "DisplayName": "MyDB",
+      "ColorIndex": 2
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 3
+}

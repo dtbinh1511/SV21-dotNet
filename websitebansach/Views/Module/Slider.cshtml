@@ -1,0 +1,66 @@
+﻿
+
+@model IEnumerable<MyDB.Models.Slide>
+@{
+    var list = ViewBag.ListCategory;
+}
+<div id="slider">
+    <div class="grid wide">
+        <div class="row">
+            <div class="col l-3 sidebar hide-on-mobile-tablet">
+                <div class="sidebar-wrapper">
+                    <h2 class="sidebar-title">
+                        DANH MỤC SẢN PHẨM
+                    </h2>
+                    <ul class="sidebar-list">
+                        @foreach (var item in @list)
+                        {
+
+                            <li class="sidebar-item">
+                                <a href="~/@item.Slug" class="sidebar-item__link">
+                                    @item.Name
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div class="col l-9 slider-wrapper">
+                <div class="slider-list-picture">
+
+                    @foreach (var s in Model)
+                    {
+                        <img src="~/Assets/Client/images/slides/@s.Image" alt="" class="slider-img" />
+                    }
+                </div>
+                @{
+                    int index = 0;
+                }
+                <div class="slider-list-control">
+                    @foreach (var s in Model)
+                    {
+                        if (index == 0)
+                        {
+                            <div class="slider-control-item active"></div>
+                        }
+                        else
+                        {
+
+                            <div class="slider-control-item"></div>
+                        }
+                        index++;
+
+                    }
+                </div>
+                <div class="slider-arrow">
+                    <div class="slider-arrow-left">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="slider-arrow-right">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

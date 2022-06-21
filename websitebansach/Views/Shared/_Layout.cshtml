@@ -1,0 +1,74 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title</title>
+
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="https://nobita.vn/layouts/fontpage/images/favicon.ico" />
+
+    <!-- Css -->
+    <link href="~/Assets/Client/css/base.css" rel="stylesheet" />
+    <link href="~/Assets/Client/css/grid.css" rel="stylesheet" />
+    <link href="~/Assets/Client/css/header.css" rel="stylesheet" />
+    <link href="~/Assets/Client/css/footer.css" rel="stylesheet" />
+    <link href="~/Assets/Client/css/responsive.css" rel="stylesheet" />
+
+    @RenderSection("header", required: false)
+
+</head>
+
+<body>
+    <div id="header">
+        <div class="header-wrapper">
+            <div class="header-top">
+                <div class="grid wide">
+                    <div class="row">
+
+                        @Html.Action("MobileMainMenu", "Module")
+
+                        <div class="col l-3 m-9 c-8 header-top__logo">
+                            <a href="/" class="header-top__logo-link">
+                                <img src="~/Assets/Client/images/logo.png" alt="" class="header-top__picture-img" />
+                            </a>
+                        </div>
+                        @Html.Action("Support", "Module")
+                    </div>
+                </div>
+            </div>
+            @RenderSection("header_top", required: false)
+
+        </div>
+    </div>
+
+    @RenderBody()
+
+    <footer id="footer">
+        <div class="grid wide">
+            @Html.Action("Footer", "Module")
+        </div>
+
+        <div class="copyright">
+            <div class="container">
+                <div class="copyright-text">
+                    <p>Copyright © 2014 Nobita.vn</p>
+                </div>
+            </div>
+        </div>
+
+        <a href="#" class="footer-arrow-top">
+            <i class="fas fa-arrow-up"></i>
+        </a>
+    </footer>
+
+
+    <script src="~/Assets/Client/js/main.js"></script>
+    @RenderSection("footer", required: false)
+</body>
+</html>

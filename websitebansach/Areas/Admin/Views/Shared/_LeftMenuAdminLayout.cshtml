@@ -1,0 +1,138 @@
+﻿<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="/Admin/Book" class="brand-link">
+
+        <img src="~/Assets/Admin/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8" />
+        <span class="brand-text font-weight-light">Administration</span>
+    </a>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
+                <!-- ui -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fab fa-buffer"></i>
+                        <p>
+                            Quản lý sản phẩm
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index","Book")" class="nav-link">
+                                <i class="far fa-circle nav-icon text-danger"></i>
+                                <p>Sách</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index","Author")" class="nav-link">
+                                <i class="far fa-circle nav-icon text-info"></i>
+                                <p>Tác Giả</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index","Category")" class="nav-link">
+                                <i class="far fa-circle nav-icon text-primary"></i>
+                                <p>Danh Mục</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index","Publisher")" class="nav-link">
+                                <i class="far fa-circle nav-icon text-warning"></i>
+                                <p>Nhà Xuất Bản</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fab fa-buffer"></i>
+                        <p>
+                            Quản Lý Khách hàng
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index","User")" class="nav-link">
+                                <i class="far fa-circle nav-icon text-warning"></i>
+                                <p>Khách Hàng</p>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fab fa-buffer"></i>
+                        <p>
+                            Bài viết
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index","Post")" class="nav-link">
+                                <i class="far fa-circle nav-icon text-warning"></i>
+                                <p>Trang đơn</p>
+                            </a>
+                        </li>                       
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Đang cập nhật</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fab fa-buffer"></i>
+                        <p>
+                            Giao diện
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index","Slide")" class="nav-link">
+                                <i class="far fa-circle nav-icon text-info"></i>
+                                <p>Slider</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index","Menu")" class="nav-link">
+                                <i class="far fa-circle nav-icon text-primary"></i>
+                                <p>Menu</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fab fa-buffer"></i>
+                        <p>
+                            Quản Lý Đơn Hàng
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index","Order")" class="nav-link">
+                                <i class="far fa-circle nav-icon text-danger"></i>
+                                <p>Đơn Hàng</p>
+                            </a>
+                        </li>                       
+                    </ul>
+                </li>
+
+               
+            </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+</aside>

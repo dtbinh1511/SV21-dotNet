@@ -1,0 +1,25 @@
+﻿@model IEnumerable<MyDB.Models.Menu>
+
+<div class="header-bottom hide-on-mobile-tablet">
+    <div class="grid wide">
+        <ul class="row header-bottom-wrapper">
+
+            @foreach (var menu in Model)
+            {
+                @Html.Action("MainMenuSub", "Module", new { @id = menu.Id })
+
+            }
+
+            <li class="col l-o-7 l-2-4 m-6 c-6 header-bottom-hotline">
+                <h5>
+                    <i class="fas fa-phone"></i>
+                    Hotline:
+                    <span class="header-bottom-hotline__text">
+                        0387 655 461
+                    </span>
+                </h5>
+            </li>
+
+        </ul>
+    </div>
+</div>

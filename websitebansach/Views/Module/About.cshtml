@@ -1,0 +1,27 @@
+﻿@model IEnumerable<MyDB.Models.Category>
+
+<!-- about start -->
+<section id="section-about">
+    <div class="about-content container">
+        <h5>Mua Sách Online Tại Nobita.Vn</h5>
+        <p>
+            Ra đời từ năm 2011, đến nay <strong>Nobita.vn</strong> đã trở thành địa chỉ mua sách online quen thuộc của hàng ngàn độc giả trên cả nước. Với đầu sách phong phú, thuộc các thể loại:
+            @foreach (var item in Model)
+            {
+                <a href="~/@item.Slug"><span>@item.Name,</span> </a>
+            }
+            ,... được cập nhật liên tục từ các nhà xuất bản uy tín trong nước.
+        </p>
+        <p>
+            Khi mua sách online tại Nobita.vn, Quý khách được
+            <strong>Bọc plastic miễn phí</strong> đến 99% (trừ sách bìa cứng, sách dạng hộp - dạng đặc biệt, sách khổ quá to, ...)
+        </p>
+        <p>
+            Ngoài ra, với hình thức
+            <strong>
+                Giao hàng thu tiền tận nơi và Đổi hàng trong vòng 7
+                ngày
+            </strong> nếu sách có bất kỳ lỗi nào trong quá trình in ấn sẽ giúp Quý khách yên tâm hơn khi mua sắm tại Nobita.vn
+        </p>
+    </div>
+</section>

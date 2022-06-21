@@ -1,0 +1,251 @@
+﻿@model MyDB.Models.BookInfo
+
+@{
+    ViewBag.Title = "Admin | Chi tiết sách";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="content-wrapper">
+        <!-- Main content -->
+        <section class="content my-3">
+
+            <!-- Default box -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <strong class="text-danger text-uppercase">Chi tiết sách</strong>
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <a href="@Url.Action("Index", "Book")" class="btn btn-sm btn-info">
+                                <i class="fas fa-arrow-left"></i> Về trang chủ
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered table-striped">
+                        <tr>
+                            <td>
+                                Mã sách
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => model.Id)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Tên sách
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => model.Name)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Slug
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => model.Slug)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Tóm tắt
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => model.Description)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Ngày phát hành
+                            </td>
+
+                            <td>@string.Format("{0:dd/MM/yyyy}", Model.DatePub)</td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                Mã tác giả
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => model.AuthorName)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Mã danh mục
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => model.CategoryName)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Mã NXB
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => model.PublisherName)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Kích thước
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => model.Size)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Trọng lượng
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => model.Weight)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Giá
+                            </td>
+
+                            <td>
+                                @string.Format("{0:0,0}", Model.Price)
+                                <sup>đ</sup>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Giảm giá
+                            </td>
+
+                            <td>
+                                @{
+                                    var Rate = Model.Rate * 100;
+                                }
+                                @string.Format("{0:0,0}", Rate)%
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Giá đã giảm
+                            </td>
+
+                            <td>
+                                @string.Format("{0:0,0}", Model.SalePrice)
+                                <sup>đ</sup>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Số lượng tồn
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => model.QuantityStock)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Số lượng nhập
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => model.QuantityImport)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Ngày nhập
+                            </td>
+
+                            <td>@string.Format("{0:dd/MM/yyyy}", Model.DateImport)</td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                Ngày tạo
+                            </td>
+
+                            <td>@string.Format("{0:dd/MM/yyyy}", Model.CreateAt)</td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                Người tạo
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => model.CreateBy)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Ngày cập nhật
+                            </td>
+
+                            <td>@string.Format("{0:dd/MM/yyyy}", Model.UpdateAt)</td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                Người cập nhật
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => model.UpdateBy)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.MetaDesc)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => model.MetaDesc)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Từ khóa
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => model.MetaKey)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Trạng thái</td>
+                            <td>
+                                @if (Model.Status == 1)
+                                {
+                                    <span class="text-success">Hoạt động</span>
+                                }
+                                else
+                                {
+                                    <span class="text-danger">Ngừng hoạt động</span>
+                                }
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+
+        </section>
+        <!-- /.content -->
+    </div>
+}

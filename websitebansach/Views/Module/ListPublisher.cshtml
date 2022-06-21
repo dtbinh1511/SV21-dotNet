@@ -1,0 +1,14 @@
+﻿@model IEnumerable<MyDB.Models.Publisher>
+
+
+<div class="sidebar-wrapper">
+    <h2 class="sidebar-wrapper-headding">Nhà xuất bản</h2>
+    <ul class="sidebar-list sidebar-scroll">
+        @foreach (var item in Model)
+        {
+
+            <li class="sidebar-item"><a href="~/@item.Slug">@item.Name</a></li>
+        }
+
+    </ul>
+</div>

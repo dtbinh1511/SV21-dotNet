@@ -1,0 +1,138 @@
+﻿@model MyDB.Models.Order
+
+@{
+    ViewBag.Title = "Admin | Chi tiết đơn hàng";
+}
+
+@{
+    var KhachHang = ViewBag.KH;
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="content-wrapper">
+        <!-- Main content -->
+        <section class="content my-3">
+
+            <!-- Default box -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <strong class="text-danger text-uppercase">Chi tiết đơn hàng</strong>
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <a href="@Url.Action("Index", "Order")" class="btn btn-sm btn-info">
+                                <i class="fas fa-arrow-left"></i> Về trang chủ
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h3>Thông tin khách hàng</h3>
+                            <table class="table table-bordered table-striped">
+                                <tr>
+                                    <td>Mã khách hàng</td>
+                                    <td>@KhachHang.Id</td>
+                                </tr>
+                                <tr>
+                                    <td>Tên khách hàng</td>
+                                    <td>@KhachHang.Fullname</td>
+                                </tr>
+                                <tr>
+                                    <td>Email</td>
+                                    <td>@KhachHang.Email</td>
+                                </tr>
+                                <tr>
+                                    <td>Số điện thoại</td>
+                                    <td>@KhachHang.Phone</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="col-md-6">
+                            <h3>Thông tin người nhận</h3>
+                            <table class="table table-bordered table-striped">
+                                <tr>
+                                    <td>Tên người nhận</td>
+                                    <td>@Model.ReceiverName</td>
+                                </tr>
+                                <tr>
+                                    <td>Số điện thoại người nhận</td>
+                                    <td>@Model.ReceiverPhone</td>
+                                </tr>
+                                <tr>
+                                    <td>Địa chỉ người nhận</td>
+                                    <td>@Model.ReceiverAddress</td>
+                                </tr>
+                                <tr>
+                                    <td>Thời gian đặt</td>
+                                    <td>@Model.TimeOrder</td>
+                                </tr>
+                                <tr>
+                                    <td>Phương thức thanh toán</td>
+                                    <td>@Model.PayMethod</td>
+                                </tr>
+                                <tr>
+                                    <td>Ghi chú</td>
+                                    <td>@Model.Note</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+
+                    <h3>Chi tiết đơn hàng</h3>
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Mã sản phẩm</th>
+                                <th>Hình sản phẩm</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Giá</th>
+                                <th>Số lượng</th>
+                                <th>Thành tiền</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{ decimal Cost = 0;}
+                            @foreach (var ct in ViewBag.CTDonHang)
+                            {
+                                <tr>
+                                    <td>@ct.BookId</td>
+                                    <td> <img src="~/Assets/Client/images/products/@Html.Action("BookImg", "Book", new { bid = ct.BookId })" width="50" /> </td>
+                                    <td>@Html.Action("BookName", "Book", new { bid = ct.BookId })</td>
+                                    <td>@string.Format("{0:0,0}", ct.Price)<sup>đ</sup></td>
+                                    <td>@ct.Quantity</td>
+                                    <td>@string.Format("{0:0,0}", ct.Amount)<sup>đ</sup></td>
+                                </tr>
+                                Cost += ct.Amount;
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th colspan="4">
+                                    <a href="@Url.Action("Huy","Order", new {bid = Model.Id})" class="btn btn-sm btn-danger">Hủy</a>
+                                    <a href="@Url.Action("DaXacMinh","Order", new { bid = Model.Id })" class="btn btn-sm btn-info">Đã xác minh</a>
+                                    <a href="@Url.Action("DangVanChuyen","Order", new { bid = Model.Id })" class="btn btn-sm btn-primary">Đang vận chuyển</a>
+                                    <a href="@Url.Action("ThanhCong","Order", new { bid = Model.Id })" class="btn btn-sm btn-success">Thành công</a>
+
+                                </th>
+                                <th>Thành tiền</th>
+                                <th>@string.Format("{0:0,0}", Cost)<sup>đ</sup></th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+
+            </div>
+            <!-- /.card -->
+
+        </section>
+        <!-- /.content -->
+    </div>
+}

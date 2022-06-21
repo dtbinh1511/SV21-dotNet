@@ -1,0 +1,20 @@
+﻿@model IEnumerable<MyDB.Models.Menu>
+@{
+    var menu = ViewBag.Menu;
+}
+
+<li class="col l-2-4 m-6 c-6 header-bottom-category">
+    <a href="@menu.Link" class="header-bottom-category__title">
+        <i class="fas fa-bars"></i> @menu.Name
+    </a>
+    <ul class="header-category-list">
+        @foreach (var a in Model)
+        {
+            <li class="header-category-item">
+                <a href="@a.Link" class="header-category-item__link">
+                    @a.Name
+                </a>
+            </li>
+        }
+    </ul>
+</li>

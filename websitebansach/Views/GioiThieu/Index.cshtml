@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewBag.Title = "Về nobita";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section header{
+    <style>
+        h4 {
+            font-size: 2rem;
+            line-height: 2;
+        }
+
+        p {
+            font-size: 1.6rem;
+            line-height: 2;
+        }
+    </style>
+}
+
+@section header_top{
+    @Html.Action("MainMenu", "Module")
+}
+@Html.Partial("Breadcrumb")
+
+<div id="app-content">
+    <div class="grid wide">
+        <h4> Giới thiệu về chúng tôi</h4>
+        <div class="text-content">
+            <p>
+                <strong>
+                    Đây là web chúng tôi làm dành cho việc học và tham khảo
+                    website
+                </strong>
+                <a href="https://nobita.vn/"> Nobita.vn</a>
+            </p>
+            <p>
+                <strong> Nhà sách trên mạng Nobita.vn</strong> là nơi mà Qúy khách
+                có thể dễ dàng lựa chọn cho mình những quyển sách hay, có giá trị
+                đích thực với giá cả phải chăng.
+            </p>
+            <p>
+                Quý khách hoàn toàn có thể yên tâm về chất lượng của từng sản phẩm
+                mà chúng tôi cung cấp. Với đội ngũ nhân viên thân thiện, nhiệt
+                tình, có trình độ chuyên môn về lĩnh vực Kinh doanh xuất bản phẩm,
+                chúng tôi hi vọng sẽ mang lại cho quý khách nhiều sự lựa chọn
+                trong việc tìm kiếm và thưởng thức những cuốn sách hay, có giá
+                trị.
+            </p>
+            <p>
+                <strong> Nobita.vn</strong> cam kết sẽ không ngừng cải tiến và nâng
+                cao chất lượng dịch vụ nhằm thỏa mãn tối đa nhu cầu của khách
+                hàng.
+                <strong> Cụ thể:</strong>
+            </p>
+            <p> <strong> - Về hàng hóa:</strong> </p>
+            <p> + Hàng hóa phong phú, có giá trị cao.</p>
+            <p> + Sản phẩm mới được cập nhật thường xuyên.</p>
+            <p>
+                + Sản phẩm đến tay khách hàng luôn đúng với những thông tin mô tả
+                trên website <strong> Nobita.vn. </strong>
+            </p>
+            <p>
+                <strong> - Về giá cả: </strong>
+            </p>
+            <p>
+                + Gía bán luôn thấp hơn hoặc bằng với giá bìa.
+                <strong> Nobita.vn</strong> luôn có những chương trình giảm giá từ
+                10 – 30% cho những sản phẩm mới.
+            </p>
+            <p> <strong> - Dịch vụ:</strong> </p>
+            <p>
+                + Bao sách Plastic Miễn Phí (Trừ những tựa sách quá khổ, quá nhỏ,
+                sách dạng Hộp hoặc Flash card, sách bìa cứng)
+            </p>
+            <p> + Hỗ trợ khách hàng từ 8h - 21h các ngày trong tuần.</p>
+            <p> + Giao hàng thu tiền tận nơi</p>
+            <p>
+                + Giao hàng nhanh từ 1 – 2 ngày trên toàn quốc. Miễn phí vận
+                chuyển với những đơn hàng ≥ 80.000đ (Tham khảo thêm Bảng giá phí
+                vận chuyển tại <strong>Nobita.vn</strong> ).
+            </p>
+            <p> + Đặt hàng theo yêu cầu của Qúy khách.</p>
+            <p> + Phương thức thanh toán linh hoạt, …</p>
+            <p>
+                <strong>
+                    Nobita.vn – Nhà sách trên mạng hân hạnh được phục vụ Quý
+                    khách
+                </strong>
+            </p>
+        </div>
+    </div>
+</div>

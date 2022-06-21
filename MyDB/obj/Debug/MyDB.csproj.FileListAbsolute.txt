@@ -1,0 +1,12 @@
+E:\java\hocKy5\.net\cuoiki\websitebansach\MyDB\bin\Debug\MyDB.dll.config
+E:\java\hocKy5\.net\cuoiki\websitebansach\MyDB\bin\Debug\MyDB.dll
+E:\java\hocKy5\.net\cuoiki\websitebansach\MyDB\bin\Debug\MyDB.pdb
+E:\java\hocKy5\.net\cuoiki\websitebansach\MyDB\bin\Debug\EntityFramework.dll
+E:\java\hocKy5\.net\cuoiki\websitebansach\MyDB\bin\Debug\EntityFramework.SqlServer.dll
+E:\java\hocKy5\.net\cuoiki\websitebansach\MyDB\bin\Debug\EntityFramework.xml
+E:\java\hocKy5\.net\cuoiki\websitebansach\MyDB\bin\Debug\EntityFramework.SqlServer.xml
+E:\java\hocKy5\.net\cuoiki\websitebansach\MyDB\obj\Debug\MyDB.csproj.CoreCompileInputs.cache
+E:\java\hocKy5\.net\cuoiki\websitebansach\MyDB\obj\Debug\MyDB.csproj.CopyComplete
+E:\java\hocKy5\.net\cuoiki\websitebansach\MyDB\obj\Debug\MyDB.dll
+E:\java\hocKy5\.net\cuoiki\websitebansach\MyDB\obj\Debug\MyDB.pdb
+E:\java\hocKy5\.net\cuoiki\websitebansach\MyDB\obj\Debug\MyDB.csproj.AssemblyReference.cache

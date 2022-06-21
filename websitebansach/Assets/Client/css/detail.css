@@ -1,0 +1,277 @@
+#detail {
+    position: relative;
+    margin-top: 30px;
+}
+
+.detail-picture {
+}
+
+.detail-img {
+    width: 100%;
+}
+
+.detail-content {
+}
+
+.detail-content__title {
+    font-size: 1.8rem;
+    font-weight: normal;
+    margin: 10px 0;
+    color: #333;
+}
+
+.detail-content__publisher,
+.detail-content__authors {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.detail-content__publisher-name,
+.detail-content__author {
+    text-decoration: none;
+}
+
+    .detail-content__publisher-name:hover,
+    .detail-content__author:hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
+.detail-content--border {
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+.detail-content-total {
+    padding: 20px 0;
+}
+
+.detail-content__price {
+    font-size: 2.4rem;
+    font-weight: bold;
+}
+
+.detail-content__root-price {
+    font-size: 1.4rem;
+}
+
+.detail-content__sale-price {
+    font-size: 1.4rem;
+}
+
+.detail-content__button {
+    background-color: var(--red-color);  
+    color: #fff;
+    padding: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 2rem;
+    line-height:2;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    text-decoration:none;
+}
+
+    .detail-content__button.active {
+        background-color: var(--main-color);
+    }
+
+.detail-content__button-xl {
+    margin-top: 20px;
+    width: 450px;
+}
+
+.detail-content--main-color {
+    color: var(--main-color);
+}
+
+.detail-content--strong {
+    font-weight: bold;
+}
+
+.detail-content__accompanying-promotion {
+    padding: 10px 0;
+}
+
+    .detail-content__accompanying-promotion p {
+        font-size: 1.4rem;
+        margin: 5px 0;
+    }
+
+.detail-section {
+    margin: 30px 0;
+    position: relative;
+}
+
+.detail-heading {
+    color: var(--a-color);
+    font-size: 2rem;
+    border-bottom: 1px solid #e7e7e7;
+    text-transform: capitalize;
+}
+
+.detail-description {
+    padding: 0 50px;
+}
+
+.detail-title {
+    color: var(--red-color);
+    font-size: 2rem;
+    margin-top: 20px;
+}
+
+.detail-description p {
+    font-size: 1.6rem;
+    margin: 10px 0;
+}
+
+.detail-content--bg-gray {
+    background-color: var(--bg-1-color);
+}
+
+.not-underline {
+    text-decoration: none;
+}
+
+.a-hover:hover {
+    color: var(--main-color);
+}
+
+.tab-section {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.tabs {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+.tab {
+    font-size: 1.6rem;
+    font-weight: normal;
+    border-radius: 50px;
+    padding: 10px 30px;
+    border: 1px solid #eeeeee;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+    .tab.active {
+        background: var(--main-color);
+        color: #fff;
+        border-color: var(--main-color);
+        box-shadow: -1.717px 8.835px 29.76px 2.24px rgba(11, 31, 5, 0.18);
+    }
+
+.pane {
+    display: none;
+}
+
+    .pane.active {
+        display: block;
+    }
+
+.content-table {
+    padding: 20px;
+}
+
+.table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+    .table td,
+    .customers th {
+        border: 1px solid #ddd;
+        padding: 8px;
+        font-size: 1.4rem;
+    }
+
+    .table tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    .table th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #04AA6D;
+        color: white;
+    }
+
+.comment-section {
+    margin-top: 50px;
+    padding: 0 50px;
+}
+
+.comment-header {
+    display: flex;
+    width: 50%;
+}
+
+.comment-image {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.form {
+    width: 100%;
+}
+
+.form-control {
+    border: none;
+    border-bottom: 1px solid #999;
+    outline: none;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.btn {
+    font-size: 1.6rem;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    padding: 8px 12px;
+    margin-top: 10px;
+    float: right;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--main-color);
+}
+
+.comment-body {
+    margin-top: 20px;
+    width: 50%;
+}
+
+.comment-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.comment-item {
+    display: flex;
+    margin-top: 30px;
+}
+
+.comment-item__contents {
+}
+
+.comment-item__content-name {
+    font-size: 1.6rem;
+    line-height: 1.6;
+}
+
+.comment-item__content {
+    font-weight: normal;
+    font-size: 1.3re;
+}

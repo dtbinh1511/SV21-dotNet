@@ -1,0 +1,25 @@
+﻿@model IEnumerable<MyDB.Models.Menu>
+<div class="col m-1 c-1 menubar hide-on-pc">
+    <input type="checkbox" name="close" id="checkbox-close" hidden />
+    <label for="checkbox-close"><i class="fas fa-bars"></i></label>
+    <ul class="menu-list">
+        <li class="menu-heading">
+            <p class="menu-title">
+                <i class="fas fa-bars"></i> DANH MỤC SẢN PHẨM
+            </p>
+            <label for="checkbox-close">
+                <i class="fas fa-times menu-close"></i>
+            </label>
+        </li>
+
+        @foreach (var s in Model)
+        {
+            <li class="menu-item">
+                <p class="menu-item__label">
+                    @s.Name
+                </p>
+
+            </li>
+        }
+    </ul>
+</div>

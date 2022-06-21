@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Hướng dẫn mua hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section header{
+    <style>
+        h4 {
+            font-size: 2rem;
+            border-bottom: 1px solid #f2f2f2;
+            line-height: 2;
+        }
+
+        p {
+            font-size: 1.6rem;
+            line-height: 2;
+        }
+    </style>
+}
+
+@section header_top{
+    @Html.Action("MainMenu", "Module")
+}
+
+@Html.Partial("Breadcrumb")
+
+<div id="app-content">
+    <div class="grid wide">
+        <h4>Hướng dẫn mua hàng</h4>
+        <div class="text-content">
+            <p>Đang cập nhật</p>
+        </div>
+    </div>
+</div>
+
