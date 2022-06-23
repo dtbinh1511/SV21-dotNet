@@ -11,16 +11,6 @@
 @section header_top{
     @Html.Action("MainMenu", "Module")
 }
-@*@section footer{
-        <script src="~/Assets/Admin/plugins/jquery/jquery.min.js"></script>
-        <script type="text/javascript">
-            $(document).ready(function () {
-                console.log("hello")
-            })
-            var x = document.querySelector("#quantitySold");
-            console.log(x);
-        </script>
-    }*@
 
 
 @Html.Partial("Breadcrumb")
@@ -32,7 +22,7 @@
             {
 
                 <div class="cart-section-title">
-                    <h2>Giỏ hàng của tôi</h2>
+                    <h2>Giỏ hàng của tôi </h2>
                 </div>
                 <div class="cart-section-container">
                     <div class="cart-section-head">
@@ -41,61 +31,71 @@
                         </p>
                     </div>
 
-
-                    <div class="cart-section-body">
-                        <ul class="cart-section-body-head">
-                            <li id="first-title" class="col l-6 m-6 c-6">Sản phẩm</li>
-                            <li id="second-title" class="col l-2 m-2 c-2">Giá bán</li>
-                            <li id="third-title" class="col l-2 m-2 c-2">Số lượng</li>
-                            <li id="fifth-title" lass="col l-2 m-2 c-2">Thành tiền</li>
-                        </ul>
-                        <div class="cart-section-body-content">
-                            @{ decimal Cost = 0;}
-                            @foreach (var i in Model)
-                            {
-                                <div class="cart-section-body-content__item">
-                                    <div class="col l-6 m-6 c-6">
-                                        <div class="row no-gutters cart-section-body-content-col">
-                                            <div class="cart-section-picture col l-1 m-1 c-2">
-                                                <img src="~/Assets/Client/images/products/@i.Image" alt="" class="cart-section-img" />
-                                            </div>
-                                            <div class="cart-section-name col l-10 m-10 c-9">
-                                                <p>@i.Name</p>
+                    @using (Html.BeginForm("CartUpdate", "Giohang", FormMethod.Post))
+                    {
+                        <div class="cart-section-body">
+                            <ul class="cart-section-body-head">
+                                <li id="first-title" class="col l-6 m-6 c-6">Sản phẩm</li>
+                                <li id="second-title" class="col l-2 m-2 c-2">Giá bán</li>
+                                <li id="third-title" class="col l-2 m-2 c-2">Số lượng</li>
+                                <li id="fifth-title" lass="col l-2 m-2 c-2">Thành tiền</li>
+                            </ul>
+                            <div class="cart-section-body-content">
+                                @{ decimal Cost = 0;}
+                                @foreach (var i in Model)
+                                {
+                                    <div class="cart-section-body-content__item">
+                                        <div class="col l-6 m-6 c-6">
+                                            <div class="row no-gutters cart-section-body-content-col">
+                                                <div class="cart-section-picture col l-1 m-1 c-2">
+                                                    <img src="~/Assets/Client/images/products/@i.Image" alt="" class="cart-section-img" />
+                                                </div>
+                                                <div class="cart-section-name col l-10 m-10 c-9">
+                                                    <p>@i.Name</p>
+                                                </div>
                                             </div>
                                         </div>
+                                        <div class="col l-2 m-2 c-2 cart-section-price">@string.Format("{0:0,0}", i.SalePrice)<sup>đ</sup> </div>
+                                        <div class="col l-2 m-2 c-2 cart-section-quantity">
+                                            <button type="submit" name="minusQuantity" value="@i.Id" class="btn btn-sm">
+                                                <i class="fa-solid fa-minus"></i>
+                                            </button>
+                                            <input type="number" name="quantitySold" id="quantity-sold" value="@i.Quantity" min="1" />
+                                            <button type="submit" name="plusQuantity" value="@i.Id" class="btn btn-sm">
+                                                <i class="fa-solid fa-plus"></i>
+                                            </button>
+                                        </div>
+                                        <div class="col l-2 m-2 c-2 cart-section-sum">@string.Format("{0:0,0}", i.Amount)<sup>đ</sup></div>
+                                        <a href="@Url.Action("CartDelete", "Giohang", new { productId = i.Id })" class="cart-section-delete">
+                                            <i class="fa-solid fa-trash-can text-danger"></i>
+                                        </a>
                                     </div>
-                                    <div class="col l-2 m-2 c-2 cart-section-price">@string.Format("{0:0,0}", i.SalePrice)<sup>đ</sup> </div>
-                                    <div class="col l-2 m-2 c-2 cart-section-quantity">
-                                        <input type="number" name="quantitySold" id="quantity-sold" pid="@i.Id" value="@i.Quantity" min="1" />
-                                    </div>
-                                    <div class="col l-2 m-2 c-2 cart-section-sum">@string.Format("{0:0,0}", i.Amount)<sup>đ</sup></div>
-                                    <a href="@Url.Action("CartDelete", "Giohang", new { productId = i.Id })" class="cart-section-delete"><i class="fa-solid fa-trash-can text-danger"></i></a>
-                                </div>
-                                Cost += i.Amount;
-                            }
+                                    Cost += i.Amount;
+                                }
 
-                        </div>
-                        <div class="cart-section-body-footer">
-                            <div class="cart-section-body-footer-total-wrapper">
-                                <div class="cart-section-body-footer-subtotal l-o-9 m-o-8 c-o-7">
-                                    <p class="col l-6 m-6 c-6">Tổng tiền:</p>
-                                    <span class="col l-6 m-6 c-6">@string.Format("{0:0,0}", Cost)<sup>đ</sup>  </span>
+                            </div>
+                            <div class="cart-section-body-footer">
+                                <div class="cart-section-body-footer-total-wrapper">
+                                    <div class="cart-section-body-footer-subtotal l-o-9 m-o-8 c-o-7">
+                                        <p class="col l-6 m-6 c-6">Tổng tiền:</p>
+                                        <span class="col l-6 m-6 c-6">@string.Format("{0:0,0}", Cost)<sup>đ</sup>  </span>
+                                    </div>
+                                    <div class="cart-section-body-footer-total l-o-9 m-o-8 c-o-7">
+                                        <p class="col l-6 m-6 c-6">Thành tiền:</p>
+                                        <span class="col l-6 m-6 c-6"> @string.Format("{0:0,0}", Cost)<sup>đ</sup> </span>
+                                    </div>
                                 </div>
-                                <div class="cart-section-body-footer-total l-o-9 m-o-8 c-o-7">
-                                    <p class="col l-6 m-6 c-6">Thành tiền:</p>
-                                    <span class="col l-6 m-6 c-6"> @string.Format("{0:0,0}", Cost)<sup>đ</sup> </span>
+                                <div class="cart-section-body-footer-pay">
+                                    <a href="@Url.Action("Index", "Site")" class="cart-section-body-footer-close">
+                                        <i class="fas fa-caret-right"></i> Thêm sản phẩm khác vào giỏ hàng
+                                    </a>
+                                    <a href="@Url.Action("ThanhToan","Giohang")" class="cart-section-body-footer-payment">
+                                        Thực hiện thanh toán
+                                    </a>
                                 </div>
                             </div>
-                            <div class="cart-section-body-footer-pay">
-                                <a href="@Url.Action("Index", "Site")" class="cart-section-body-footer-close">
-                                    <i class="fas fa-caret-right"></i> Thêm sản phẩm khác vào giỏ hàng
-                                </a>
-                                <a href="@Url.Action("ThanhToan","Giohang")" class="cart-section-body-footer-payment">
-                                    Thực hiện thanh toán
-                                </a>
-                            </div>
                         </div>
-                    </div>
+                    }
 
                 </div>
 

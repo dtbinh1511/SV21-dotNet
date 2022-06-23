@@ -32,7 +32,7 @@ namespace websitebansach.Controllers
             {
                 if (password.Equals(user.Password))
                 {
-                    Session["UserCustomer"] = user;
+                    Session["CustomerAccount"] = user;
                     Session["CustomerId"] = user.Id;
                     return Redirect("~/");
                 }
@@ -52,7 +52,7 @@ namespace websitebansach.Controllers
 
         public ActionResult DangXuat()
         {
-            Session["UserCustomer"] = "";
+            Session["CustomerAccount"] = "";
             Session["MyCart"] = "";
             return Redirect("~/dang-nhap");
         }

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using MyDB.DAO;
 using MyDB.Models;
+using websitebansach.Library;
 namespace websitebansach.Controllers
 {
     public class GiohangController : Controller
@@ -41,11 +42,27 @@ namespace websitebansach.Controllers
         }
 
         [HttpPost]
-        public ActionResult CartUpdate(int productId, int quantity)
+        public ActionResult CartUpdate(FormCollection form)
         {
-            xCart.UpdateCart(productId, quantity);
+            string[] quantities = form.GetValues("quantitySold");
+
+            if (!string.IsNullOrEmpty(form["plusQuantity"]))
+            {
+                int id = Convert.ToInt32(form["plusQuantity"]);
+                xCart.UpdateCart(quantities, "plus", id);
+            }
+
+
+            if (!string.IsNullOrEmpty(form["minusQuantity"]))
+            {
+                int id = Convert.ToInt32(form["minusQuantity"]);
+                xCart.UpdateCart(quantities, "minus",id);
+            }
+
+
 
             return RedirectToAction("Index", "Giohang");
+
         }
 
         public ActionResult ThanhToan()
@@ -53,7 +70,7 @@ namespace websitebansach.Controllers
             List<CartItem> carts = xCart.GetCart();
 
 
-            if (Session["UserCustomer"].Equals(""))
+            if (Session["CustomerAccount"].Equals(""))
             {
                 return Redirect("~/dang-nhap");
             }

@@ -14,64 +14,68 @@
 }
 
 @Html.Partial("Breadcrumb")
-<div id="app-content">
-    <div class="grid wide">
-        <div id="register" class="col l-o-3">
-            <form action="" id="login-input">
-                <p class="login-form-heading">Thông tin đăng nhập</p>
-                <div class="login-form-item">
-                    <label for="login-form-item-email" class="login-form-item-label">
-                        Email <span class="login-form-item-special">*</span>
-                    </label>
-                    <input type="email" name="email" id="login-form-item-email" class="login-form-item-control" />
-                    <span class="login-form-message">Nhập email của bạn</span>
-                </div>
-                <div class="login-form-item">
-                    <label for="login-form-item-password" class="login-form-item-label">
-                        Mật khẩu <span class="login-form-item-special">*</span>
-                    </label>
-                    <input type="password" name="password" id="login-form-item-password" class="login-form-item-control" />
-                    <span class="login-form-message">Mật khẩu phải có ít nhất 6 ký tự</span>
-                </div>
-                <div class="login-form-item">
-                    <label for="login-form-item-confirm-password" class="login-form-item-label">
-                        Xác nhận mật khẩu
-                        <span class="login-form-item-special">*</span>
-                    </label>
-                    <input type="password" name="confirm-password" id="login-form-item-confirm-password"
-                           class="login-form-item-control" />
-                    <span class="login-form-message">Xác nhận lại mật khẩu</span>
-                </div>
-                <p class="login-form-heading">Thông tin cá nhân</p>
-                <div class="login-form-item">
-                    <label for="login-form-item-name" class="login-form-item-label">
-                        Họ và tên <span class="login-form-item-special">*</span>
-                    </label>
-                    <input type="text" name="email" id="login-form-item-name" class="login-form-item-control" />
-                    <span class="login-form-message"></span>
-                </div>
-                <div class="login-form-item">
-                    <label for="login-form-item-gender" class="login-form-item-label">
-                        Giới tính <span class="login-form-item-special">*</span>
-                    </label>
-                    <label for="login-form-item-gender-male">Nam</label>
-                    <input type="radio" name="gender" id="login-form-item-gender-male" class="login-form-item-radio" />
-                    <label for="login-form-item-gender-female">Nữ</label>
-                    <input type="radio" name="gender" id="login-form-item-gender-female" class="login-form-item-radio" />
-                    <span class="login-form-message"></span>
-                </div>
-                <div class="login-form-item">
-                    <label for="login-form-item-phone" class="login-form-item-label">
-                        Điện thoại<span class="login-form-item-special">*</span>
-                    </label>
-                    <input type="text" name="phone" id="login-form-item-phone" class="login-form-item-control" />
-                    <span class="login-form-message"></span>
-                </div>
-                <div class="login-form-item">
-                    <input type="submit" value="Đăng ký" class="login-form-item-submit col l-o-3" />
-                </div>
-            </form>
+@using (Html.BeginForm())
+{
+
+    <div id="app-content">
+        <div class="grid wide">
+            <div id="register" class="col l-o-3">
+                <form action="" id="login-input">@*  *@
+                    <p class="login-form-heading">Thông tin đăng nhập</p>
+                    <div class="login-form-item">
+                        <label for="login-form-item-email" class="login-form-item-label">
+                            Email <span class="login-form-item-special">*</span>
+                        </label>
+                        <input type="email" name="email" id="login-form-item-email" class="login-form-item-control" />
+                        <span class="login-form-message">Nhập email của bạn</span>
+                    </div>
+                    <div class="login-form-item">
+                        <label for="login-form-item-password" class="login-form-item-label">
+                            Mật khẩu <span class="login-form-item-special">*</span>
+                        </label>
+                        <input type="password" name="password" id="login-form-item-password" class="login-form-item-control" />
+                        <span class="login-form-message">Mật khẩu phải có ít nhất 6 ký tự</span>
+                    </div>
+                    <div class="login-form-item">
+                        <label for="login-form-item-confirm-password" class="login-form-item-label">
+                            Xác nhận mật khẩu
+                            <span class="login-form-item-special">*</span>
+                        </label>
+                        <input type="password" name="confirm-password" id="login-form-item-confirm-password"
+                               class="login-form-item-control" />
+                        <span class="login-form-message">Xác nhận lại mật khẩu</span>
+                    </div>
+                    <p class="login-form-heading">Thông tin cá nhân</p>
+                    <div class="login-form-item">
+                        <label for="login-form-item-name" class="login-form-item-label">
+                            Họ và tên <span class="login-form-item-special">*</span>
+                        </label>
+                        <input type="text" name="email" id="login-form-item-name" class="login-form-item-control" />
+                        <span class="login-form-message"></span>
+                    </div>
+                    <div class="login-form-item">
+                        <label for="login-form-item-gender" class="login-form-item-label">
+                            Giới tính <span class="login-form-item-special">*</span>
+                        </label>
+                        <label for="login-form-item-gender-male">Nam</label>
+                        <input type="radio" name="gender" id="login-form-item-gender-male" class="login-form-item-radio" />
+                        <label for="login-form-item-gender-female">Nữ</label>
+                        <input type="radio" name="gender" id="login-form-item-gender-female" class="login-form-item-radio" />
+                        <span class="login-form-message"></span>
+                    </div>
+                    <div class="login-form-item">
+                        <label for="login-form-item-phone" class="login-form-item-label">
+                            Điện thoại<span class="login-form-item-special">*</span>
+                        </label>
+                        <input type="text" name="phone" id="login-form-item-phone" class="login-form-item-control" />
+                        <span class="login-form-message"></span>
+                    </div>
+                    <div class="login-form-item">
+                        <input type="submit" value="Register" class="login-form-item-submit col l-o-3" />
+                    </div>
+                @*</form>*@
+            </div>
         </div>
     </div>
-</div>
+}
 

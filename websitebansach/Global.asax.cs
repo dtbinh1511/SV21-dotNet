@@ -18,11 +18,11 @@ namespace websitebansach
         protected void Session_Start()
         {
             // Lưu thông tin đăng nhập quản lý
-            Session["UserAdmin"] = "";
+            Session["AdminAccount"] = "";
             Session["AdminId"] = 1;
 
             // lưu thông tin đăng nhập người dùng
-            Session["UserCustomer"] = "";
+            Session["CustomerAccount"] = "";
             Session["CustomerId"] = "";
 
             // Giỏ hàng

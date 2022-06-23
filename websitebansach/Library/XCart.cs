@@ -49,25 +49,37 @@ namespace websitebansach
             return carts;
         }
 
-        public void UpdateCart(int productId,int quantity)
+        public void UpdateCart(string[] array, string type, int id)
         {
-
+            //update sp
             List<CartItem> carts = GetCart();
-            int vt = 0;
-            foreach (CartItem item in carts)
+            if (type.Equals("plus"))
             {
-                if (item.Id == productId)
+                for (int i = 0; i < carts.Count; i++)
                 {
-                    carts[vt].Quantity = quantity;
-                    carts[vt].Amount = carts[vt].Quantity * carts[vt].SalePrice;
-
-                    break;
+                    if (carts[i].Id == id)
+                    {
+                        carts[i].Quantity = Convert.ToInt32(array[i]) + 1;
+                        carts[i].Amount = carts[i].Quantity * carts[i].SalePrice;
+                    }
                 }
-                vt++;
             }
+            else if (type.Equals("minus"))
+            {
+
+                for (int i = 0; i < carts.Count; i++)
+                {
+                    int quantity = Convert.ToInt32(array[i]);
+                    if (quantity > 1 && carts[i].Id==id)
+                    {
+                        carts[i].Quantity = Convert.ToInt32(array[i]) - 1;
+                        carts[i].Amount = carts[i].Quantity * carts[i].SalePrice;
+                    }
+                }
+            }
+
+
             System.Web.HttpContext.Current.Session["MyCart"] = carts;
-
-
         }
 
         public void DeleteCart(int productId)

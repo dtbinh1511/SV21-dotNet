@@ -182,7 +182,7 @@
                             </tr>
                             <tr>
                                 <td>Ngày phát hành</td>
-                                <td>@Model.DatePub</td>
+                                <td>@string.Format("{0:dd/MM/yyyy}", Model.DatePub)</td>
                             </tr>
                             <tr>
                                 <td class="detail-content--main-color">Danh mục</td>
@@ -192,11 +192,12 @@
 
                     </div>
                 </div>
-                <div class="pane ">
+                @*bình luận*@
+                @*<div class="pane ">
                     <div class="comment-section">
                         <div class="comment-header">
                             <img src="./assets/images/avatar5.png" alt="" class="comment-image">
-                            <form action="#" method="" class="form">
+                            <form action="#" method="post" class="form">
                                 <div class="form-group">
                                     <input type="text" name="message" id="" class="form-control">
                                 </div>
@@ -238,7 +239,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>*@
             </div>
         </section>
         @Html.Action("SameAuthor", "Module", new { @id = Model.AuthorId })

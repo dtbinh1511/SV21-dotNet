@@ -35,13 +35,12 @@
                     <thead>
 
                         <tr>
-
-                            <th>Mã KH</th>
                             <th>Ngày đặt</th>
                             <th>Người nhận</th>
                             <th>SDT người nhận</th>
                             <th>Địa chỉ người nhận</th>
                             <th>Phương thức thanh toán</th>
+                            <th>Trạng thái đơn hàng</th>
                             <th>Chức năng</th>
                         </tr>
                     </thead>
@@ -51,14 +50,32 @@
                         {
 
                             <tr>
-
-                                <td>@Html.DisplayFor(modelItem => item.UserId)</td>
-                                <td>@Html.DisplayFor(modelItem => item.TimeOrder)</td>
+                                <td>@string.Format("{0:dd/MM/yyyy}", item.TimeOrder)</td>
                                 <td>@Html.DisplayFor(modelItem => item.ReceiverName)</td>
                                 <td>@Html.DisplayFor(modelItem => item.ReceiverPhone)</td>
                                 <td>@Html.DisplayFor(modelItem => item.ReceiverAddress)</td>
                                 <td>@Html.DisplayFor(modelItem => item.PayMethod)</td>
+                                <td>
+                                    @switch (item.Status)
+                                    {
+                                        case 0:
+                                            <button  type="button" class="btn btn-sm btn-danger">Đơn hàng đã hủy</button>
+                                            break;
+                                        case 1:
+                                            <button type="button" class="btn btn-sm btn-warning">Đang chờ xác nhận đơn hàng</button>
+                                            break;
+                                        case 2:
+                                            <button type="button" class="btn btn-sm btn-info">Đã xác nhận đơn hàng</button>
+                                            break;
+                                        case 3:
+                                            <button type="button" class="btn btn-sm btn-primary">Đơn hàng đang vận chuyển</button>
+                                            break;
+                                        case 4:
+                                            <button type="button" class="btn btn-sm btn-success">Giao hàng thành công</button>
+                                            break;
 
+                                    }
+                                </td>
                                 <td>
                                     <a href="@Url.Action("Details","Order", new { id = item.Id })" class="btn btn-sm btn-info">
                                         <i class="fas fa-eye"></i>
