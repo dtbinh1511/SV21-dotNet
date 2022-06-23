@@ -59,7 +59,7 @@ namespace websitebansach
                url: "dang-ky",
                defaults: new { controller = "Khachhang", action = "DangKy", id = UrlParameter.Optional }
            );
-           
+
             routes.MapRoute(
                  name: "Huongdanmuahang",
                  url: "huong-dan-mua-hang",
@@ -95,12 +95,14 @@ namespace websitebansach
                 url: "thong-bao",
                 defaults: new { controller = "Thongbao", action = "Index", id = UrlParameter.Optional }
             );
-            //khai bao url dong
+
             routes.MapRoute(
-               name: "SiteSlug",
-               url: "{slug}",
-               defaults: new { controller = "Site", action = "Index", id = UrlParameter.Optional }
-           );
+             name: "SiteSlug",
+             url: "{slug}",
+             defaults: new { controller = "Site", action = "Index", id = UrlParameter.Optional }
+         );
+            //khai bao url dong
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

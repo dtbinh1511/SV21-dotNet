@@ -6,7 +6,7 @@ using System.Data.Entity.SqlServer;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using PagedList;
 namespace MyDB.DAO
 {
     public class BookDAO
@@ -59,26 +59,47 @@ namespace MyDB.DAO
 
         }
 
-
-        public List<Book> GetListByPubId(int? id)
-        {
-            return db.Books
-               .Where(m => m.PublisherId == id)
-               .ToList();
-        }
-
         public List<Book> GetListByAuId(int? id)
         {
             return db.Books
-                .Where(m => m.AuthorId == id)
+                .Where(m => m.Id == id)
                 .ToList();
         }
-
         public List<Book> GetListByCateId(int? id)
         {
             return db.Books
+               .Where(m => m.Id == id)
+               .ToList();
+        }
+        public List<Book> GetListByPubId(int? id)
+        {
+            return db.Books
+               .Where(m => m.Id == id)
+               .ToList();
+        }
+
+        public IPagedList<Book> GetListByPubId(int? id, int pageSize, int pageNumber)
+        {
+            return db.Books
+               .Where(m => m.PublisherId == id)
+               .OrderBy(m => m.Id)
+                .ToPagedList(pageNumber, pageSize);
+        }
+
+        public IPagedList<Book> GetListByAuId(int? id, int pageSize, int pageNumber)
+        {
+            return db.Books
+                .Where(m => m.AuthorId == id)
+                .OrderBy(m => m.Id)
+                .ToPagedList(pageNumber, pageSize);
+        }
+
+        public IPagedList<Book> GetListByCateId(int? id, int pageSize, int pageNumber)
+        {
+            return db.Books
                 .Where(m => m.CategoryId == id)
-                .ToList();
+                .OrderBy(m => m.Id)
+                .ToPagedList(pageNumber, pageSize);
         }
         public List<Book> GetNewBook()
         {

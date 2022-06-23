@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using MyDB.DAO;
 using MyDB.Models;
+using PagedList;
 namespace websitebansach.Controllers
 {
     public class SiteController : Controller
@@ -15,7 +16,7 @@ namespace websitebansach.Controllers
         AuthorDAO authorDAO = new AuthorDAO();
         PublisherDAO publisherDAO = new PublisherDAO();
         CategoryDAO categoryDAO = new CategoryDAO();
-        public ActionResult Index(string slug = null)
+        public ActionResult Index(string slug = null, int? page = null)
         {
             if (slug == null)
             {
@@ -31,12 +32,12 @@ namespace websitebansach.Controllers
                     {
                         case "category":
                             {
-                                return this.ProductCategory(slug);
+                                return this.ProductCategory(slug, page);
                             }
                         case "page":
                             {
 
-                                return this.PostPage(slug);
+                                return this.PostPage(slug, page);
                             }
                         default:
                             {
@@ -56,14 +57,14 @@ namespace websitebansach.Controllers
                         Author author = authorDAO.GetRow(slug);
                         if (author != null)
                         {
-                            return this.ProductAuthor(slug);
+                            return this.ProductAuthor(slug, page);
                         }
                         else
                         {
                             Publisher publisher = publisherDAO.GetRow(slug);
                             if (publisher != null)
                             {
-                                return this.ProductPublisher(slug);
+                                return this.ProductPublisher(slug, page);
                             }
                             else
                             {
@@ -82,26 +83,43 @@ namespace websitebansach.Controllers
         }
         public ActionResult Product()
         {
+            // chua dung
             return View("Product");
         }
-        public ActionResult ProductCategory(string slug)
+        public ActionResult ProductCategory(string slug, int? page)
         {
+            if (page == null) page = 1;
+            int pageSize = 8;
+            int pageNumber = page ?? 1; //Toán tử ?? trong C# mô tả nếu page khác null thì lấy giá trị page, còn
+            // nếu page = null thì lấy giá trị 1 cho biến pageNumber.
+
             Category category = categoryDAO.GetRow(slug);
-            List<Book> books = bookDAO.GetListByCateId(category.Id);
+            IPagedList<Book> books = bookDAO.GetListByCateId(category.Id, pageSize, pageNumber);
             ViewBag.Category = category;
             return View("ProductCategory", books);
         }
-        public ActionResult ProductAuthor(string slug)
+        public ActionResult ProductAuthor(string slug, int? page)
         {
+            if (page == null) page = 1;
+            int pageSize = 8;
+            int pageNumber = page ?? 1; //Toán tử ?? trong C# mô tả nếu page khác null thì lấy giá trị page, còn
+            // nếu page = null thì lấy giá trị 1 cho biến pageNumber.
+
             Author author = authorDAO.GetRow(slug);
-            List<Book> books = bookDAO.GetListByAuId(author.Id);
+            IPagedList<Book> books = bookDAO.GetListByAuId(author.Id, pageSize, pageNumber);
+
             ViewBag.Author = author;
             return View("ProductAuthor", books);
         }
-        public ActionResult ProductPublisher(string slug)
+        public ActionResult ProductPublisher(string slug, int? page)
         {
+            if (page == null) page = 1;
+            int pageSize = 8;
+            int pageNumber = page ?? 1; //Toán tử ?? trong C# mô tả nếu page khác null thì lấy giá trị page, còn
+            // nếu page = null thì lấy giá trị 1 cho biến pageNumber.
+
             Publisher publisher = publisherDAO.GetRow(slug);
-            List<Book> books = bookDAO.GetListByPubId(publisher.Id);
+            IPagedList<Book> books = bookDAO.GetListByPubId(publisher.Id, pageSize, pageNumber);
             ViewBag.Publisher = publisher;
             return View("ProductPublisher", books);
         }
@@ -115,8 +133,9 @@ namespace websitebansach.Controllers
             ViewBag.Publisher = publisher;
             return View("BookDetail", book);
         }
-        public ActionResult PostPage(string slug)
+        public ActionResult PostPage(string slug, int? page)
         {
+            // chua dung
             return View("PostPage");
         }
         public ActionResult Error404(string slug)

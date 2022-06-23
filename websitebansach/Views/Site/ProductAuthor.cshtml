@@ -1,5 +1,5 @@
-﻿@model IEnumerable<MyDB.Models.Book>
-
+﻿@model PagedList.IPagedList<MyDB.Models.Book>
+@using PagedList.Mvc;
 @{
     var obj = @ViewBag.Author;
 }
@@ -80,7 +80,7 @@
 
                         </div>
                     </div>
-                    <!-- product start -->
+                    @Html.PagedListPager(Model, page => Url.Action("Index", "Site", new { page }))
                 </div>
             </div>
         </div>

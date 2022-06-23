@@ -10,3 +10,7 @@ E:\java\hocKy5\.net\cuoiki\websitebansach\MyDB\obj\Debug\MyDB.csproj.CopyComplet
 E:\java\hocKy5\.net\cuoiki\websitebansach\MyDB\obj\Debug\MyDB.dll
 E:\java\hocKy5\.net\cuoiki\websitebansach\MyDB\obj\Debug\MyDB.pdb
 E:\java\hocKy5\.net\cuoiki\websitebansach\MyDB\obj\Debug\MyDB.csproj.AssemblyReference.cache
+E:\java\hocKy5\.net\cuoiki\websitebansach\MyDB\bin\Debug\PagedList.dll
+E:\java\hocKy5\.net\cuoiki\websitebansach\MyDB\bin\Debug\PagedList.Mvc.dll
+E:\java\hocKy5\.net\cuoiki\websitebansach\MyDB\bin\Debug\PagedList.xml
+E:\java\hocKy5\.net\cuoiki\websitebansach\MyDB\bin\Debug\PagedList.Mvc.xml

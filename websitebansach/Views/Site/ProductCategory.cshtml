@@ -1,6 +1,7 @@
-﻿@model IEnumerable<MyDB.Models.Book>
+﻿@model PagedList.IPagedList<MyDB.Models.Book>
+@using PagedList.Mvc;
 
-@{ 
+@{
     var obj = @ViewBag.Category;
 }
 @{
@@ -67,7 +68,7 @@
                                                 <a href="~/@item.Slug" class="product-item-wrapper__link">
                                                     <p>@item.Name</p>
                                                 </a>
-                                            </div>                                           
+                                            </div>
                                             <div class="product-item-wrapper__prices">
                                                 <div class="product-item-wrapper__sale-price">@string.Format("{0:0,0}", SalePrice)  <sup>đ</sup> </div>
                                                 <div class="product-item-wrapper__old-price"><del>@string.Format("{0:0,0}", item.Price)</del> <sup>đ</sup></div>
@@ -81,6 +82,8 @@
                         </div>
                     </div>
                     <!-- product start -->
+                    @Html.PagedListPager(Model, page => Url.Action("Index", "Site", new { page }))
+
                 </div>
             </div>
         </div>
