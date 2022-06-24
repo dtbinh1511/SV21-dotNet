@@ -43,7 +43,7 @@
     border: none;
     outline: none;
     color: var(--main-color);
-    width: 10%;
+    padding:5px;
     height: 30px;
     cursor: pointer;
     font-weight: bold;

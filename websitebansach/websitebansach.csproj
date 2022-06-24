@@ -2211,6 +2211,7 @@
     <Content Include="Views\GioHang\ThanhToan.cshtml" />
     <Content Include="Views\GioHang\ThanhCong.cshtml" />
     <Content Include="Views\Module\Support.cshtml" />
+    <Content Include="Views\TimKiem\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2224,7 +2225,6 @@
     <Folder Include="Assets\Client\images\products\" />
     <Folder Include="Assets\Client\images\slides\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\TimKiem\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MyDB\MyDB.csproj">

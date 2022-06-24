@@ -6,10 +6,14 @@
     <div class="row hide-on-mobile-tablet">
         <div class="col l-8 header-top__support-search">
             <div class="header-search-wrapper">
-                <input type="text" name="search" id="header-search" class="header-search" />
-                <input type="submit" value="Tìm" class="header-search-submit" />
+                @using (Html.BeginForm("Index", "Timkiem", FormMethod.Get))
+                {
+                    <input type="text" name="search" id="header-search" value="@ViewBag.Keyword" class="header-search" placeholder="Nhập tên sách cần tìm" />
+                    <input type="submit" value="Tìm kiếm" class="header-search-submit" />
+                }
             </div>
         </div>
+
         <ul class="col l-4 header-top__support-tool">
             <li class="header-tool">
                 @if (Session["CustomerAccount"].Equals(""))

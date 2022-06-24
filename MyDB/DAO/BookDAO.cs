@@ -59,6 +59,8 @@ namespace MyDB.DAO
 
         }
 
+
+
         public List<Book> GetListByAuId(int? id)
         {
             return db.Books
@@ -76,6 +78,20 @@ namespace MyDB.DAO
             return db.Books
                .Where(m => m.Id == id)
                .ToList();
+        }
+
+        public List<Book> GetListByName(string name)
+        {
+            return db.Books
+               .Where(m => m.Name.Contains(name))
+               .ToList();
+        }
+        public IPagedList<Book> GetListByName(string name, int pageSize, int pageNumber)
+        {
+            return db.Books
+               .Where(m => m.Name.Contains(name))
+               .OrderBy(m => m.Id)
+                .ToPagedList(pageNumber, pageSize);
         }
 
         public IPagedList<Book> GetListByPubId(int? id, int pageSize, int pageNumber)
