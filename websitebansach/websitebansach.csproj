@@ -2015,15 +2015,18 @@
     <Compile Include="Areas\Admin\Controllers\SlideController.cs" />
     <Compile Include="Areas\Admin\Controllers\Template\TemplateController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Controllers\ComingSoonController.cs" />
     <Compile Include="Controllers\GiohangController.cs" />
     <Compile Include="Controllers\GioithieuController.cs" />
     <Compile Include="Controllers\BaivietController.cs" />
     <Compile Include="Controllers\HuongdanmuahangController.cs" />
     <Compile Include="Controllers\KhachhangController.cs" />
     <Compile Include="Controllers\ModuleController.cs" />
+    <Compile Include="Controllers\NewBookController.cs" />
     <Compile Include="Controllers\PhuongthucthanhtoanController.cs" />
     <Compile Include="Controllers\PhuongthucvanchuyenController.cs" />
     <Compile Include="Controllers\CauhoithuonggapController.cs" />
+    <Compile Include="Controllers\SellerController.cs" />
     <Compile Include="Controllers\SiteController.cs" />
     <Compile Include="Controllers\ThongbaoController.cs" />
     <Compile Include="Controllers\TimkiemController.cs" />
@@ -2212,6 +2215,9 @@
     <Content Include="Views\GioHang\ThanhCong.cshtml" />
     <Content Include="Views\Module\Support.cshtml" />
     <Content Include="Views\TimKiem\Index.cshtml" />
+    <Content Include="Views\ComingSoon\Index.cshtml" />
+    <Content Include="Views\Seller\Index.cshtml" />
+    <Content Include="Views\NewBook\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

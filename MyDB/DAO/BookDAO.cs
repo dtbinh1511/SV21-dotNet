@@ -61,22 +61,22 @@ namespace MyDB.DAO
 
 
 
-        public List<Book> GetListByAuId(int? id)
+        public List<Book> GetListByAuId(int? auId)
         {
             return db.Books
-                .Where(m => m.Id == id)
+                .Where(m => m.AuthorId == auId)
                 .ToList();
         }
-        public List<Book> GetListByCateId(int? id)
+        public List<Book> GetListByCateId(int? cid)
         {
             return db.Books
-               .Where(m => m.Id == id)
+               .Where(m => m.CategoryId == cid)
                .ToList();
         }
         public List<Book> GetListByPubId(int? id)
         {
             return db.Books
-               .Where(m => m.Id == id)
+               .Where(m => m.PublisherId == id)
                .ToList();
         }
 
@@ -133,6 +133,36 @@ namespace MyDB.DAO
                 .Where(m => DbFunctions.DiffDays(m.DatePub, CurrentTime) < 0)
                 .ToList();
         }
+
+        public IPagedList<Book> GetComingSoon(int pageSize, int pageNumber)
+        {
+            DateTime CurrentTime = DateTime.Now;
+            return db.Books
+                .Where(m => DbFunctions.DiffDays(m.DatePub, CurrentTime) < 0)
+                .OrderBy(m => m.Id)
+                .ToPagedList(pageNumber, pageSize);
+        }
+
+        public IPagedList<Book> GetNewBook(int pageSize, int pageNumber)
+        {
+            DateTime CurrentTime = DateTime.Now;
+            return db.Books
+               .Where(m => DbFunctions.DiffDays(m.DatePub, CurrentTime) > 0
+                      && DbFunctions.DiffDays(m.DatePub, CurrentTime) < 200)
+                .OrderBy(m => m.Id)
+                .ToPagedList(pageNumber, pageSize);
+        }
+
+
+        public IPagedList<Book> GetSeller(int pageSize, int pageNumber)
+        {
+            DateTime CurrentTime = DateTime.Now;
+            return db.Books
+                 .OrderByDescending(m => m.QuantityImport - m.QuantityStock)
+                 .Take(20)
+                .ToPagedList(pageNumber, pageSize);
+        }
+
         public List<Book> GetSeller()
         {
             DateTime CurrentTime = DateTime.Now;

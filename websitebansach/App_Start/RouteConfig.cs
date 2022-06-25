@@ -17,7 +17,21 @@ namespace websitebansach
                 url: "tat-ca-san-pham",
                 defaults: new { controller = "Site", action = "Product", id = UrlParameter.Optional }
             );
-
+            routes.MapRoute(
+              name: "Sắp phát hành",
+              url: "sap-phat-hanh",
+              defaults: new { controller = "ComingSoon", action = "Index", id = UrlParameter.Optional }
+          );
+            routes.MapRoute(
+              name: "Sách mới",
+              url: "sach-moi",
+              defaults: new { controller = "NewBook", action = "Index", id = UrlParameter.Optional }
+          );
+            routes.MapRoute(
+              name: "Sách bán chạy",
+              url: "sach-ban-chay",
+              defaults: new { controller = "Seller", action = "Index", id = UrlParameter.Optional }
+          );
             routes.MapRoute(
                 name: "GioHang",
                 url: "gio-hang",

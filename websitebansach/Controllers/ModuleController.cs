@@ -112,9 +112,10 @@ namespace websitebansach.Controllers
             return View("ListPublisher", list);
         }
 
-        public ActionResult SameAuthor(int? id)
+        public ActionResult SameAuthor(int? auId)
         {
-            List<Book> books = bookDAO.GetListByAuId(id);
+            List<Book> books = bookDAO.GetListByAuId(auId);
+            ViewBag.auId = auId;
             return View("SameAuthor", books);
         }
        
