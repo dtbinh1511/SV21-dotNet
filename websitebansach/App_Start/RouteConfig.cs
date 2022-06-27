@@ -80,20 +80,25 @@ namespace websitebansach
                  defaults: new { controller = "Huongdanmuahang", action = "Index", id = UrlParameter.Optional }
             );
             routes.MapRoute(
-                 name: "Phuongthucthanhtoan",
+                 name: "PhuongThucThanhToan",
                  url: "phuong-thuc-thanh-toan",
                  defaults: new { controller = "Phuongthucthanhtoan", action = "Index", id = UrlParameter.Optional }
             );
             routes.MapRoute(
-                 name: "Phuongthucvanchuyen",
-                 url: "phuong-thuc-van-chuyen",
-                 defaults: new { controller = "Phuongthucvanchuyen", action = "Index", id = UrlParameter.Optional }
+                 name: "Chinhsachvanchuyen",
+                 url: "chinh-sach-van-chuyen",
+                 defaults: new { controller = "Chinhsachvanchuyen", action = "Index", id = UrlParameter.Optional }
             );
             routes.MapRoute(
                  name: "Cauhoithuonggap",
                  url: "cau-hoi-thuong-gap",
                  defaults: new { controller = "Cauhoithuonggap", action = "Index", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+                name: "Chinhsachbaomat",
+                url: "chinh-sach-bao-mat-thong-tin",
+                defaults: new { controller = "Chinhsachbaomat", action = "Index", id = UrlParameter.Optional }
+           );
             routes.MapRoute(
                name: "Thanhtoan",
                url: "thanh-toan",

@@ -2015,6 +2015,7 @@
     <Compile Include="Areas\Admin\Controllers\SlideController.cs" />
     <Compile Include="Areas\Admin\Controllers\Template\TemplateController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Controllers\ChinhsachbaomatController.cs" />
     <Compile Include="Controllers\ComingSoonController.cs" />
     <Compile Include="Controllers\GiohangController.cs" />
     <Compile Include="Controllers\GioithieuController.cs" />
@@ -2024,11 +2025,10 @@
     <Compile Include="Controllers\ModuleController.cs" />
     <Compile Include="Controllers\NewBookController.cs" />
     <Compile Include="Controllers\PhuongthucthanhtoanController.cs" />
-    <Compile Include="Controllers\PhuongthucvanchuyenController.cs" />
+    <Compile Include="Controllers\ChinhsachvanchuyenController.cs" />
     <Compile Include="Controllers\CauhoithuonggapController.cs" />
     <Compile Include="Controllers\SellerController.cs" />
     <Compile Include="Controllers\SiteController.cs" />
-    <Compile Include="Controllers\ThongbaoController.cs" />
     <Compile Include="Controllers\TimkiemController.cs" />
     <Compile Include="Controllers\TuyendungController.cs" />
     <Compile Include="Global.asax.cs">
@@ -2188,10 +2188,8 @@
     <Content Include="Views\Tuyendung\Index.cshtml" />
     <Content Include="Views\HuongDanMuaHang\Index.cshtml" />
     <Content Include="Views\PhuongThucThanhToan\Index.cshtml" />
-    <Content Include="Views\PhuongThucVanChuyen\Index.cshtml" />
     <Content Include="Views\CauHoiThuongGap\Index.cshtml" />
     <Content Include="Views\GioiThieu\Index.cshtml" />
-    <Content Include="Views\ThongBao\Index.cshtml" />
     <Content Include="Views\Module\NewBook.cshtml" />
     <Content Include="Views\Module\Seller.cshtml" />
     <Content Include="Views\Module\ComingSoon.cshtml" />
@@ -2218,6 +2216,8 @@
     <Content Include="Views\ComingSoon\Index.cshtml" />
     <Content Include="Views\Seller\Index.cshtml" />
     <Content Include="Views\NewBook\Index.cshtml" />
+    <Content Include="Views\Chinhsachbaomat\Index.cshtml" />
+    <Content Include="Views\Chinhsachvanchuyen\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

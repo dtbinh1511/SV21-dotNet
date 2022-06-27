@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace websitebansach.Controllers
 {
-    public class PhuongthucvanchuyenController : Controller
+    public class ChinhsachbaomatController : Controller
     {
-        // GET: PhuongThucVanChuyen
+        // GET: Chinhsachbaomat
         public ActionResult Index()
         {
             return View();

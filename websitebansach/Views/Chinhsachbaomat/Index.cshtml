@@ -1,0 +1,84 @@
+﻿
+@{
+    ViewBag.Title = "Chính sách bảo mật thông tin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@section header{
+    <style>
+        h2 {
+            font-size: 3rem;
+            line-height: 2;
+            font-weight: normal;
+        }
+
+        p {
+            font-size: 1.4rem;
+            line-height: 3;
+        }
+
+        .title {
+            margin-left: 30px;
+        }
+
+        li {
+            font-size: 1.4rem;
+        }
+    </style>
+}
+
+@section header_top{
+    @Html.Action("MainMenu", "Module")
+}
+@Html.Partial("Breadcrumb")
+
+<div id="app-content">
+    <div class="grid wide">
+        <h2>Chính sách bảo mật thông tin</h2>
+        <div class="text-content">
+            <ol>
+                <li class="title">
+                    <strong>
+                        Mục đích và phạm vi thu thập thông tin
+                    </strong>
+                </li>
+                <li class="title">
+                    <strong>
+                        Phạm vi sử dụng thông tin
+                    </strong>
+                </li>
+                <li class="title">
+                    <strong>
+                        Thời gian lưu trữ thông tin
+                    </strong>
+                </li>
+                <li class="title">
+                    <strong>
+                        Những người hoặc tổ chức có thể được tiếp cận với thông tin cá nhân
+                    </strong>
+                </li>
+                <li class="title">
+                    <strong>
+                        Địa chỉ của đơn vị thu thập và quản lý thông tin cá nhân
+                    </strong>
+                </li>
+                <li class="title">
+                    <strong>
+                        Phương tiện và công cụ để người dùng tiếp cận và chỉnh sửa dữ liệu cá nhân của mình
+                    </strong>
+                </li>
+                <li class="title">
+                    <strong>
+                        Cơ chế tiếp nhận và giải quyết khiếu nại của người tiêu dùng liên quan đến việc thông tin cá nhân bị sử dụng sai mục đích hoặc phạm vi đã thông báo.
+                    </strong>
+                </li>
+
+            </ol>
+            <p>Chúng tôi hiểu rằng quyền lợi của bạn trong việc bảo vệ thông tin cá nhân cũng chính là trách nhiệm của chúng tôi nên trong bất kỳ trường hợp có thắc mắc, góp ý nào liên quan đến chính sách bảo mật của Chúng tôi , và liên quan đến việc thông tin cá nhân bị sử dụng sai mục đích hoặc phạm vi đã thông báo vui lòng liên hệ qua số hotline</p>
+            <p><strong>Trang web này phục vụ cho học tập </strong></p>
+        </div>
+    </div>
+</div>
+
+

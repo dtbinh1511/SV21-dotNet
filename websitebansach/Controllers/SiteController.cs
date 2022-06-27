@@ -34,7 +34,7 @@ namespace websitebansach.Controllers
                             {
                                 return this.ProductCategory(slug, page);
                             }
-                        case "page":
+                        case "post":
                             {
 
                                 return this.PostPage(slug, page);
