@@ -1,4 +1,5 @@
-﻿
+﻿@model MyDB.Models.UserInfo
+
 @{
     ViewBag.Title = "Đăng ký";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -14,43 +15,50 @@
 }
 
 @Html.Partial("Breadcrumb")
-@using (Html.BeginForm())
+
+@using (Html.BeginForm("DangKy", "Khachhang", FormMethod.Post))
 {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
     <div id="app-content">
         <div class="grid wide">
             <div id="register" class="col l-o-3">
-                <form action="" id="login-input">@*  *@
+                <form action="" id="login-input">
                     <p class="login-form-heading">Thông tin đăng nhập</p>
+                    @if (ViewBag.error != null)
+                    {
+                        <span class="text-danger">@ViewBag.error</span>
+                    }
                     <div class="login-form-item">
                         <label for="login-form-item-email" class="login-form-item-label">
                             Email <span class="login-form-item-special">*</span>
                         </label>
-                        <input type="email" name="email" id="login-form-item-email" class="login-form-item-control" />
-                        <span class="login-form-message">Nhập email của bạn</span>
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "login-form-item-control", @type = "email" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                     </div>
                     <div class="login-form-item">
                         <label for="login-form-item-password" class="login-form-item-label">
                             Mật khẩu <span class="login-form-item-special">*</span>
                         </label>
-                        <input type="password" name="password" id="login-form-item-password" class="login-form-item-control" />
-                        <span class="login-form-message">Mật khẩu phải có ít nhất 6 ký tự</span>
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "login-form-item-control", @type = "password" } })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
                     </div>
                     <div class="login-form-item">
                         <label for="login-form-item-confirm-password" class="login-form-item-label">
                             Xác nhận mật khẩu
                             <span class="login-form-item-special">*</span>
                         </label>
-                        <input type="password" name="confirm-password" id="login-form-item-confirm-password"
-                               class="login-form-item-control" />
-                        <span class="login-form-message">Xác nhận lại mật khẩu</span>
+                        @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "login-form-item-control", @type = "password" } })
+                        @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
                     </div>
                     <p class="login-form-heading">Thông tin cá nhân</p>
                     <div class="login-form-item">
                         <label for="login-form-item-name" class="login-form-item-label">
                             Họ và tên <span class="login-form-item-special">*</span>
                         </label>
-                        <input type="text" name="email" id="login-form-item-name" class="login-form-item-control" />
+                        @Html.EditorFor(model => model.Fullname, new { htmlAttributes = new { @class = "login-form-item-control" } })
+                        @Html.ValidationMessageFor(model => model.Fullname, "", new { @class = "text-danger" })
                         <span class="login-form-message"></span>
                     </div>
                     <div class="login-form-item">
@@ -58,22 +66,33 @@
                             Giới tính <span class="login-form-item-special">*</span>
                         </label>
                         <label for="login-form-item-gender-male">Nam</label>
-                        <input type="radio" name="gender" id="login-form-item-gender-male" class="login-form-item-radio" />
+                        @Html.RadioButtonFor(model => model.Gender, "true")
+                        @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
                         <label for="login-form-item-gender-female">Nữ</label>
-                        <input type="radio" name="gender" id="login-form-item-gender-female" class="login-form-item-radio" />
+                        @Html.RadioButtonFor(model => model.Gender, "false")
+                        @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
                         <span class="login-form-message"></span>
                     </div>
                     <div class="login-form-item">
                         <label for="login-form-item-phone" class="login-form-item-label">
                             Điện thoại<span class="login-form-item-special">*</span>
                         </label>
-                        <input type="text" name="phone" id="login-form-item-phone" class="login-form-item-control" />
+                        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "login-form-item-control" } })
+                        @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
                         <span class="login-form-message"></span>
                     </div>
                     <div class="login-form-item">
-                        <input type="submit" value="Register" class="login-form-item-submit col l-o-3" />
+                        <label for="login-form-item-phone" class="login-form-item-label">
+                            Địa chỉ<span class="login-form-item-special">*</span>
+                        </label>
+                        @Html.TextAreaFor(model => model.Address, new { @class = "login-form-item-control", @rows = "3", @col = "5" })
+                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                        <span class="login-form-message"></span>
                     </div>
-                @*</form>*@
+                    <div class="login-form-item">
+                        <input type="submit" value="Đăng ký" class="login-form-item-submit col l-o-3" />
+                    </div>
+                </form>
             </div>
         </div>
     </div>
