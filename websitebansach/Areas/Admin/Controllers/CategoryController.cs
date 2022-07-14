@@ -65,7 +65,7 @@ namespace websitebansach.Areas.Admin.Controllers
                 category.ParentId = (category.ParentId == null) ? 0 : category.ParentId;
                 category.DisplayOrder = (category.DisplayOrder == null) ? 1 : (category.DisplayOrder + 1);
                 category.CreateAt = DateTime.Now;
-                category.CreateBy = (Session["AdminId"].Equals("")) ? 1 : int.Parse(Session["AdminId"].ToString());
+                category.CreateBy = (Session["SessionAccountId"].Equals("")) ? 1 : int.Parse(Session["SessionAccountId"].ToString());
                 if (categoryDAO.Add(category) == 1)
                 {
                     Link link = new Link();
@@ -112,7 +112,7 @@ namespace websitebansach.Areas.Admin.Controllers
                 category.ParentId = (category.ParentId == null) ? 0 : category.ParentId;
                 category.DisplayOrder = (category.DisplayOrder == null) ? 1 : (category.DisplayOrder + 1); // bug lưu
                 category.UpdateAt = DateTime.Now;
-                category.UpdateBy = (Session["AdminId"].Equals("")) ? 1 : int.Parse(Session["AdminId"].ToString());
+                category.UpdateBy = (Session["SessionAccountId"].Equals("")) ? 1 : int.Parse(Session["SessionAccountId"].ToString());
 
                 if (categoryDAO.Update(category) == 1)
                 {
@@ -187,7 +187,7 @@ namespace websitebansach.Areas.Admin.Controllers
             }
             category.Status = (category.Status == 1) ? 2 : 1;
             category.UpdateAt = DateTime.Now;
-            category.UpdateBy = Convert.ToInt32(Session["AdminId"].ToString());
+            category.UpdateBy = Convert.ToInt32(Session["SessionAccountId"].ToString());
             categoryDAO.Update(category);
             TempData["Message"] = new XMessage("success", "Thay đổi trạng thái thành công");
             return RedirectToAction("Index", "Category");

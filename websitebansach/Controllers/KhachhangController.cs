@@ -26,25 +26,32 @@ namespace websitebansach.Controllers
             string email = form["email"];
             string password = form["password"];
             User user = userDAO.GetRow(email);
-            String strError = "";
             if (user == null)
             {
-                strError = "Email không tồn tại";
+                TempData["Message"] = new XMessage("danger", "Email không tồn tại");
             }
             else
             {
                 if (GetMD5(password).Equals(user.Password))
                 {
-                    Session["CustomerAccount"] = user;
-                    Session["CustomerId"] = user.Id;
-                    return Redirect("~/");
+                    Session["SessionAccount"] = user;
+                   Session["SessionAccountId"] = user.Id;
+
+                    if (user.Role == true)
+                    {
+                        return RedirectToAction("Index", "Admin/Book");
+
+                    }
+                    else
+                    {
+                        return Redirect("~/");
+                    }
                 }
                 else
                 {
-                    strError = "Mật khẩu không đúng";
+                    TempData["Message"] = new XMessage("danger", "Mật khẩu không đúng");
                 }
             }
-            ViewBag.Error = strError;
             return View("DangNhap");
         }
 
@@ -83,23 +90,23 @@ namespace websitebansach.Controllers
                     }
                     else
                     {
-                        XMessage message = new XMessage("danger", "Mật khẩu không trùng khớp");
-                        return View("Dangky", "Khachhang");
+                        TempData["Message"] = new XMessage("danger", "Mật khẩu không trùng khớp");
+                        return RedirectToAction("Dangky", "Khachhang");
                     }
                 }
                 else
                 {
-                    XMessage message = new XMessage("danger", "Email đã tồn tại");
-                    return View("Dangky", "Khachhang");
+                    TempData["Message"] = new XMessage("danger", "Email đã tồn tại");
+                    return RedirectToAction("Dangky", "Khachhang");
                 }
             }
             return View();
         }
         public ActionResult DangXuat()
         {
-            Session["CustomerAccount"] = "";
+            Session["SessionAccount"] = "";
             Session["MyCart"] = "";
-            return Redirect("~/dang-nhap");
+            return RedirectToAction("Dangnhap","Khachhang");
         }
 
 

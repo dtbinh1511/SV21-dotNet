@@ -47,7 +47,7 @@ namespace websitebansach.Areas.Admin.Controllers
             {
                 publisher.Slug = XString.Str_Slug(publisher.Name);
                 publisher.CreateAt = DateTime.Now;
-                publisher.CreateBy = (Session["AdminId"].Equals("")) ? 1 : int.Parse(Session["AdminId"].ToString());
+                publisher.CreateBy = (Session["SessionAccountId"].Equals("")) ? 1 : int.Parse(Session["SessionAccountId"].ToString());
                 
                 publisherDAO.Add(publisher);
                 TempData["Message"] = new XMessage("success", "Thêm mẫu tin thành công");
@@ -83,7 +83,7 @@ namespace websitebansach.Areas.Admin.Controllers
             {
                 publisher.Slug = XString.Str_Slug(publisher.Name);
                 publisher.UpdateAt = DateTime.Now;
-                publisher.UpdateBy = (Session["AdminId"].Equals("")) ? 1 : int.Parse(Session["AdminId"].ToString());
+                publisher.UpdateBy = (Session["SessionAccountId"].Equals("")) ? 1 : int.Parse(Session["SessionAccountId"].ToString());
                 
                 publisherDAO.Update(publisher);
                 TempData["Message"] = new XMessage("success", "Cập nhật mẫu tin thành công");
@@ -139,7 +139,7 @@ namespace websitebansach.Areas.Admin.Controllers
             }
             publisher.Status = (publisher.Status == 1) ? 2 : 1;
             publisher.UpdateAt = DateTime.Now;
-            publisher.UpdateBy = Convert.ToInt32(Session["AdminId"].ToString());
+            publisher.UpdateBy = Convert.ToInt32(Session["SessionAccountId"].ToString());
             
             publisherDAO.Update(publisher);
             TempData["Message"] = new XMessage("success", "Thay đổi trạng thái thành công");

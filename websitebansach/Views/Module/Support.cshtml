@@ -16,7 +16,7 @@
 
         <ul class="col l-4 header-top__support-tool">
             <li class="header-tool">
-                @if (Session["CustomerAccount"].Equals(""))
+                @if (Session["SessionAccountId"].Equals(""))
                 {
                     <a href="~/dang-nhap" class="header-tool-login">Đăng nhập</a>
                 }

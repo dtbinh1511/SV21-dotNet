@@ -73,7 +73,7 @@ namespace websitebansach.Areas.Admin.Controllers
                         menu.DisplayOrder = 0;
                         menu.Status = 1;
                         menu.CreateAt = DateTime.Now;
-                        menu.CreateBy = (Session["AdminId"].Equals("")) ? 1 : int.Parse(Session["AdminId"].ToString());
+                        menu.CreateBy = (Session["SessionAccountId"].Equals("")) ? 1 : int.Parse(Session["SessionAccountId"].ToString());
                         menuDAO.Add(menu);
                     }
                     TempData["Message"] = new XMessage("success", "Thêm menu thành công");
@@ -106,7 +106,7 @@ namespace websitebansach.Areas.Admin.Controllers
                         menu.DisplayOrder = 0;
                         menu.Status = 1;
                         menu.CreateAt = DateTime.Now;
-                        menu.CreateBy = (Session["AdminId"].Equals("")) ? 1 : int.Parse(Session["AdminId"].ToString());
+                        menu.CreateBy = (Session["SessionAccountId"].Equals("")) ? 1 : int.Parse(Session["SessionAccountId"].ToString());
                         menuDAO.Add(menu);
                     }
                     TempData["Message"] = new XMessage("success", "Thêm menu thành công");
@@ -135,7 +135,7 @@ namespace websitebansach.Areas.Admin.Controllers
                     menu.DisplayOrder = 0;
                     menu.Status = 1;
                     menu.CreateAt = DateTime.Now;
-                    menu.CreateBy = (Session["AdminId"].Equals("")) ? 1 : int.Parse(Session["AdminId"].ToString());
+                    menu.CreateBy = (Session["SessionAccountId"].Equals("")) ? 1 : int.Parse(Session["SessionAccountId"].ToString());
                     menuDAO.Add(menu);
 
                     TempData["Message"] = new XMessage("success", "Thêm menu thành công");
@@ -167,7 +167,7 @@ namespace websitebansach.Areas.Admin.Controllers
                 menu.ParentId = (menu.ParentId == null) ? 0 : menu.ParentId;
                 menu.DisplayOrder = (menu.DisplayOrder == null) ? 1 : (menu.DisplayOrder + 1);
                 menu.UpdateAt = DateTime.Now;
-                menu.UpdateBy = (Session["AdminId"].Equals("")) ? 1 : int.Parse(Session["AdminId"].ToString());
+                menu.UpdateBy = (Session["SessionAccountId"].Equals("")) ? 1 : int.Parse(Session["SessionAccountId"].ToString());
 
                 menuDAO.Update(menu);
                 TempData["Message"] = new XMessage("success", "Cập nhật mẫu tin thành công");
@@ -235,7 +235,7 @@ namespace websitebansach.Areas.Admin.Controllers
             }
             menu.Status = (menu.Status == 1) ? 2 : 1;
             menu.UpdateAt = DateTime.Now;
-            menu.UpdateBy = Convert.ToInt32(Session["AdminId"].ToString());
+            menu.UpdateBy = Convert.ToInt32(Session["SessionAccountId"].ToString());
             menuDAO.Update(menu);
             TempData["Message"] = new XMessage("success", "Thay đổi trạng thái thành công");
             return RedirectToAction("Index", "Menu");

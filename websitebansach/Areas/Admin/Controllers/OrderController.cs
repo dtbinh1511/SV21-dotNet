@@ -57,7 +57,7 @@ namespace websitebansach.Areas.Admin.Controllers
                 case 2:
                     order.Status = 0;
                     order.UpdateAt = DateTime.Now;
-                    order.UpdateBy = int.Parse(Session["AdminId"].ToString());
+                    order.UpdateBy = int.Parse(Session["SessionAccountId"].ToString());
                     orderDAO.Update(order);
                     TempData["Message"] = new XMessage("success", "Hủy đơn hàng thành công");
                     break;
@@ -88,7 +88,7 @@ namespace websitebansach.Areas.Admin.Controllers
                 case 1:
                     order.Status = 2;
                     order.UpdateAt = DateTime.Now;
-                    order.UpdateBy = int.Parse(Session["AdminId"].ToString());
+                    order.UpdateBy = int.Parse(Session["SessionAccountId"].ToString());
                     orderDAO.Update(order);
                     TempData["Message"] = new XMessage("success", "Cập nhật trạng thái đơn hàng thành công");
                     break;
@@ -125,7 +125,7 @@ namespace websitebansach.Areas.Admin.Controllers
                 case 2:
                     order.Status = 3;
                     order.UpdateAt = DateTime.Now;
-                    order.UpdateBy = int.Parse(Session["AdminId"].ToString());
+                    order.UpdateBy = int.Parse(Session["SessionAccountId"].ToString());
                     orderDAO.Update(order);
                     TempData["Message"] = new XMessage("success", "Cập nhật trạng thái đơn hàng thành công");
                     break;                    
@@ -162,7 +162,7 @@ namespace websitebansach.Areas.Admin.Controllers
                 case 3:
                     order.Status = 4;
                     order.UpdateAt = DateTime.Now;
-                    order.UpdateBy = int.Parse(Session["AdminId"].ToString()); // !!!
+                    order.UpdateBy = int.Parse(Session["SessionAccountId"].ToString()); // !!!
                     orderDAO.Update(order);
                     TempData["Message"] = new XMessage("success", "Cập nhật trạng thái đơn hàng thành công");
                     break;

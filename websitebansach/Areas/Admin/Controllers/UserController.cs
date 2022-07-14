@@ -53,7 +53,7 @@ namespace websitebansach.Areas.Admin.Controllers
             {
                 user.Slug = XString.Str_Slug(user.Fullname);
                 user.CreateAt = DateTime.Now;
-                user.CreateBy = (Session["AdminId"].Equals("")) ? 1 : int.Parse(Session["AdminId"].ToString());
+                user.CreateBy = (Session["SessionAccountId"].Equals("")) ? 1 : int.Parse(Session["SessionAccountId"].ToString());
 
                 userDAO.Add(user);
 
@@ -92,7 +92,7 @@ namespace websitebansach.Areas.Admin.Controllers
                 user.Slug = XString.Str_Slug(user.Fullname);
 
                 user.UpdateAt = DateTime.Now;
-                user.UpdateBy = (Session["AdminId"].Equals("")) ? 1 : int.Parse(Session["AdminId"].ToString());
+                user.UpdateBy = (Session["SessionAccountId"].Equals("")) ? 1 : int.Parse(Session["SessionAccountId"].ToString());
 
                 userDAO.Update(user);
                 TempData["Message"] = new XMessage("success", "Cập nhật mẫu tin thành công");
@@ -148,10 +148,16 @@ namespace websitebansach.Areas.Admin.Controllers
             }
             user.Status = (user.Status == 1) ? 2 : 1;
             user.UpdateAt = DateTime.Now;
-            user.UpdateBy = int.Parse(Session["AdminId"].ToString());
+            user.UpdateBy = int.Parse(Session["SessionAccountId"].ToString());
             TempData["Message"] = new XMessage("success", "Thay đổi trạng thái thành công");
             userDAO.Update(user);
             return RedirectToAction("Index", "User");
+        }
+        public ActionResult DangXuat()
+        {
+            Session["SessionAccount"] = "";
+            Session["SessionAccountId"] = "";
+            return RedirectToAction("../../dang-nhap");
         }
     }
 }

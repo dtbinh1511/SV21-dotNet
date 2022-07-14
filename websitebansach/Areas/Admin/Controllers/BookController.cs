@@ -62,7 +62,7 @@ namespace websitebansach.Areas.Admin.Controllers
                 book.Slug = XString.Str_Slug(book.Name);
 
                 book.CreateAt = DateTime.Now;
-                book.CreateBy = (Session["AdminId"].Equals("")) ? 1 : int.Parse(Session["AdminId"].ToString());
+                book.CreateBy = (Session["SessionAccountId"].Equals("")) ? 1 : int.Parse(Session["SessionAccountId"].ToString());
                 book.Rate = book.Rate / 100;
                 //upload file
                 var fileImg = Request.Files["BookImage"];
@@ -130,7 +130,7 @@ namespace websitebansach.Areas.Admin.Controllers
             {
                 book.Slug = XString.Str_Slug(book.Name);
                 book.UpdateAt = DateTime.Now;
-                book.UpdateBy = (Session["AdminId"].Equals("")) ? 1 : int.Parse(Session["AdminId"].ToString());
+                book.UpdateBy = (Session["SessionAccountId"].Equals("")) ? 1 : int.Parse(Session["SessionAccountId"].ToString());
                 book.Rate = book.Rate / 100;
 
 
@@ -231,7 +231,7 @@ namespace websitebansach.Areas.Admin.Controllers
             }
             book.Status = (book.Status == 1) ? 2 : 1;
             book.UpdateAt = DateTime.Now;
-            book.UpdateBy = Convert.ToInt32(Session["AdminId"].ToString());
+            book.UpdateBy = Convert.ToInt32(Session["SessionAccountId"].ToString());
             bookDAO.Update(book);
             TempData["Message"] = new XMessage("success", "Thay đổi trạng thái thành công");
             return RedirectToAction("Index", "Book");

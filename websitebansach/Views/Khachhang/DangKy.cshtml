@@ -24,12 +24,9 @@
     <div id="app-content">
         <div class="grid wide">
             <div id="register" class="col l-o-3">
-                <form action="" id="login-input">
+                <div id="login-input">
                     <p class="login-form-heading">Thông tin đăng nhập</p>
-                    @if (ViewBag.error != null)
-                    {
-                        <span class="text-danger">@ViewBag.error</span>
-                    }
+                    @Html.Partial("Message")
                     <div class="login-form-item">
                         <label for="login-form-item-email" class="login-form-item-label">
                             Email <span class="login-form-item-special">*</span>
@@ -92,7 +89,7 @@
                     <div class="login-form-item">
                         <input type="submit" value="Đăng ký" class="login-form-item-submit col l-o-3" />
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>

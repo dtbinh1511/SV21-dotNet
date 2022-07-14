@@ -1,4 +1,5 @@
 @import url('http://fonts.cdnfonts.com/css/sf-ui-display');
+
 :root {
     --main-color: #0c6;
     --a-color: #444;
@@ -10,7 +11,7 @@
     --bg-2-color: #d9d9d9;
     --border-1-color: #eee;
     --border-1-color: #f7f7f7;
-    --gray-color:#ccc;
+    --gray-color: #ccc;
 }
 
 * {
@@ -30,10 +31,31 @@ html {
 #header,
 #slider,
 #app-content,
-#footer{
+#footer {
     position: relative;
 }
 
-a{
-    color:var(--a-color);
+a {
+    color: var(--a-color);
+}
+
+input {
+    padding-left: 5px;
+}
+
+.alert {
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    font-size:20px;
+}
+
+.alert-danger {
+    color: #dc3545;
+}
+
+.alert-success {
+    color: #23923d;
 }

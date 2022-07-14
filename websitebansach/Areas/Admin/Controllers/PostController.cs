@@ -50,7 +50,7 @@ namespace websitebansach.Areas.Admin.Controllers
             {
                 post.Slug = XString.Str_Slug(post.Title);
                 post.CreateAt = DateTime.Now;
-                post.CreateBy = (Session["AdminId"].Equals("")) ? 1 : int.Parse(Session["AdminId"].ToString());
+                post.CreateBy = (Session["SessionAccountId"].Equals("")) ? 1 : int.Parse(Session["SessionAccountId"].ToString());
 
 
 
@@ -94,7 +94,7 @@ namespace websitebansach.Areas.Admin.Controllers
             {
                 post.Slug = XString.Str_Slug(post.Title);
                 post.UpdateAt = DateTime.Now;
-                post.UpdateBy = (Session["AdminId"].Equals("")) ? 1 : int.Parse(Session["AdminId"].ToString());
+                post.UpdateBy = (Session["SessionAccountId"].Equals("")) ? 1 : int.Parse(Session["SessionAccountId"].ToString());
 
                 if (postDAO.Update(post) == 1)
                 {
@@ -158,7 +158,7 @@ namespace websitebansach.Areas.Admin.Controllers
             }
             post.Status = (post.Status == 1) ? 2 : 1;
             post.UpdateAt = DateTime.Now;
-            post.UpdateBy = Convert.ToInt32(Session["AdminId"].ToString());
+            post.UpdateBy = Convert.ToInt32(Session["SessionAccountId"].ToString());
             TempData["Message"] = new XMessage("success", "Thay đổi trạng thái thành công");
             postDAO.Update(post);
             return RedirectToAction("Index", "Post");

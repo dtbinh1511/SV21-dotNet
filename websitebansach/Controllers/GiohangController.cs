@@ -70,12 +70,12 @@ namespace websitebansach.Controllers
             List<CartItem> carts = xCart.GetCart();
 
 
-            if (Session["CustomerAccount"].Equals(""))
+            if (Session["SessionAccount"].Equals(""))
             {
-                return Redirect("~/dang-nhap");
+                return RedirectToAction("DangNhap", "Khachhang");
             }
 
-            int userId = int.Parse(Session["CustomerId"].ToString());
+            int userId = int.Parse(Session["SessionAccountId"].ToString());
             User user = userDAO.GetRow(userId);
             ViewBag.UserCustomer = user;
             return View("ThanhToan", carts);
@@ -83,7 +83,7 @@ namespace websitebansach.Controllers
 
         public ActionResult DatMua(FormCollection form)
         {
-            int userId = int.Parse(Session["CustomerId"].ToString());
+            int userId = int.Parse(Session["SessionAccountId"].ToString());
             User user = userDAO.GetRow(userId);
 
             //lay thong tin
@@ -121,7 +121,7 @@ namespace websitebansach.Controllers
                 Session["MyCart"] = "";
             }
 
-            return Redirect("~/thanh-cong");
+            return RedirectToAction("ThanhCong","Giohang");
         }
         public ActionResult ThanhCong()
         {

@@ -52,7 +52,7 @@ namespace websitebansach.Areas.Admin.Controllers
             {
 
                 slide.CreateAt = DateTime.Now;
-                slide.CreateBy = (Session["AdminId"].Equals("")) ? 1 : int.Parse(Session["AdminId"].ToString());
+                slide.CreateBy = (Session["SessionAccountId"].Equals("")) ? 1 : int.Parse(Session["SessionAccountId"].ToString());
 
                 //upload file
                 var fileImg = Request.Files["Img"];
@@ -106,7 +106,7 @@ namespace websitebansach.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 slide.UpdateAt = DateTime.Now;
-                slide.UpdateBy = (Session["AdminId"].Equals("")) ? 1 : int.Parse(Session["AdminId"].ToString());
+                slide.UpdateBy = (Session["SessionAccountId"].Equals("")) ? 1 : int.Parse(Session["SessionAccountId"].ToString());
                 string pathDir = "~/Assets/Client/Images/slides/";
 
                 //upload file
@@ -191,7 +191,7 @@ namespace websitebansach.Areas.Admin.Controllers
             }
             slide.Status = (slide.Status == 1) ? 2 : 1;
             slide.UpdateAt = DateTime.Now;
-            slide.UpdateBy = (Session["AdminId"].Equals("")) ? 1 : int.Parse(Session["AdminId"].ToString());
+            slide.UpdateBy = (Session["SessionAccountId"].Equals("")) ? 1 : int.Parse(Session["SessionAccountId"].ToString());
             TempData["Message"] = new XMessage("success", "Thay đổi trạng thái thành công");
             slideDAO.Update(slide);
             return RedirectToAction("Index", "Slide");

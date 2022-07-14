@@ -12,6 +12,7 @@ using websitebansach.Library;
 
 namespace websitebansach.Areas.Admin.Controllers
 {
+    //[Authorize(Roles = "Admin")]
     public class AuthorController : Controller
     {
         private AuthorDAO authorDAO = new AuthorDAO();
@@ -48,7 +49,7 @@ namespace websitebansach.Areas.Admin.Controllers
             {
                 author.Slug = XString.Str_Slug(author.Name);
                 author.CreateAt = DateTime.Now;
-                author.CreateBy = (Session["AdminId"].Equals("")) ? 1 : int.Parse(Session["AdminId"].ToString());
+                author.CreateBy = (Session["SessionAccountId"].Equals("")) ? 1 : int.Parse(Session["SessionAccountId"].ToString());
 
                 authorDAO.Add(author);
                 TempData["Message"] = new XMessage("success", "Thêm mẫu tin thành công");
@@ -84,7 +85,7 @@ namespace websitebansach.Areas.Admin.Controllers
             {
                 author.Slug = XString.Str_Slug(author.Name);
                 author.UpdateAt = DateTime.Now;
-                author.UpdateBy = (Session["AdminId"].Equals("")) ? 1 : int.Parse(Session["AdminId"].ToString());
+                author.UpdateBy = (Session["SessionAccountId"].Equals("")) ? 1 : int.Parse(Session["SessionAccountId"].ToString());
 
                 authorDAO.Update(author);
                 TempData["Message"] = new XMessage("success", "Cập nhật mẫu tin thành công");
@@ -141,7 +142,7 @@ namespace websitebansach.Areas.Admin.Controllers
             }
             author.Status = (author.Status == 1) ? 2 : 1;
             author.UpdateAt = DateTime.Now;
-            author.UpdateBy = Convert.ToInt32(Session["AdminId"].ToString());
+            author.UpdateBy = Convert.ToInt32(Session["SessionAccountId"].ToString());
             TempData["Message"] = new XMessage("success", "Thay đổi trạng thái thành công");
             authorDAO.Update(author);
             return RedirectToAction("Index", "Author");
