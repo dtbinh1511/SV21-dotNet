@@ -12,7 +12,6 @@ using websitebansach.Library;
 
 namespace websitebansach.Areas.Admin.Controllers
 {
-    //[Authorize(Roles = "Admin")]
     public class AuthorController : Controller
     {
         private AuthorDAO authorDAO = new AuthorDAO();

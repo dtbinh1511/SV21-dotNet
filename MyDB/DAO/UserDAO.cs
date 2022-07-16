@@ -20,6 +20,7 @@ namespace MyDB.DAO
             return (id == null) ? null : db.Users.Find(id);
 
         }
+ 
 
         public User GetRow(string email)
         {

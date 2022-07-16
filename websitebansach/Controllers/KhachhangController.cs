@@ -8,6 +8,7 @@ using MyDB.Models;
 using websitebansach.Library;
 using System.Security.Cryptography;
 using System.Text;
+using System.Web.Security;
 
 namespace websitebansach.Controllers
 {
@@ -35,8 +36,7 @@ namespace websitebansach.Controllers
                 if (GetMD5(password).Equals(user.Password))
                 {
                     Session["SessionAccount"] = user;
-                   Session["SessionAccountId"] = user.Id;
-
+                    Session["SessionAccountId"] = user.Id;
                     if (user.Role == true)
                     {
                         return RedirectToAction("Index", "Admin/Book");
@@ -106,7 +106,7 @@ namespace websitebansach.Controllers
         {
             Session["SessionAccount"] = "";
             Session["MyCart"] = "";
-            return RedirectToAction("Dangnhap","Khachhang");
+            return RedirectToAction("Dangnhap", "Khachhang");
         }
 
 
